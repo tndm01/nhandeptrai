@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using NNShop.Model.Models;
 
 namespace NNShop.Data
@@ -31,6 +32,11 @@ namespace NNShop.Data
         public DbSet<ContactDetail> ContactDetails { set; get; }
         public DbSet<Feedback> Feedbacks { set; get; }
 
+        public DbSet<ApplicationRole> ApplicationRoles { set; get; }
+        public DbSet<ApplicationGroup> ApplicationGroups { set; get; }
+        public DbSet<ApplicationRoleGroup> ApplicationRoleGroups { set; get; }
+        public DbSet<ApplicationUserGroup> ApplicationUserGroups { set; get; }
+
         public static NnShopDbContext Create()
         {
             return new NnShopDbContext();
@@ -38,10 +44,10 @@ namespace NNShop.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<IdentityUserRole>().HasKey(x => new { x.UserId, x.RoleId }).ToTable("ApplicationUserRoles");
-            //modelBuilder.Entity<IdentityUserLogin>().HasKey(x => x.UserId).ToTable("ApplicationUserLogins");
-            //modelBuilder.Entity<IdentityRole>().ToTable("ApplicationRoles");
-            //modelBuilder.Entity<IdentityUserClaim>().HasKey(x => x.UserId).ToTable("ApplicationUserClaims");
+            modelBuilder.Entity<IdentityUserRole>().HasKey(x => new { x.UserId, x.RoleId }).ToTable("ApplicationUserRoles");
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(x => x.UserId).ToTable("ApplicationUserLogins");
+            modelBuilder.Entity<IdentityRole>().ToTable("ApplicationRoles");
+            modelBuilder.Entity<IdentityUserClaim>().HasKey(x => x.UserId).ToTable("ApplicationUserClaims");
         }
     }
 }
