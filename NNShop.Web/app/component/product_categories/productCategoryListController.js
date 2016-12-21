@@ -6,9 +6,9 @@
     function productCategoryListController($scope, apiService) {
         $scope.productCategories = [];
 
-        $scope.getProductCagories = getProductCagories;
+        $scope.getProductCategories = getProductCategories;
 
-        function getProductCagories() {
+        function getProductCategories() {
             apiService.get('/api/productcategory/getall', null, function (result) {
                 $scope.productCategories = result.data;
             }, function () {
@@ -16,6 +16,6 @@
             });
         }
 
-        $scope.getProductCagories();
+        $scope.getProductCategories();
     }
 })(angular.module('nnshop.product_categories'));
