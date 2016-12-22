@@ -23,15 +23,28 @@ namespace NNShop.Web.Api
             this._productCategoryService = productCategoryService;
         }
 
-        [Route("getall")]
         [HttpGet]
-        public HttpResponseMessage GetAll(HttpRequestMessage request)
+        [Route("getall")]
+        public HttpResponseMessage GetAll(HttpRequestMessage request, int page, int pageSize = 20)
         {
-            return CreateHttpResponse(request,() =>
+            return CreateHttpResponse(request, () =>
             {
+                int totalRow = 0;
                 var model = _productCategoryService.GetAll();
-                var responseData  = Mapper.Map<IEnumerable<ProductCategory>,IEnumerable< ProductCategoryViewModel>> (model);
-                var respone = request.CreateResponse(HttpStatusCode.OK, responseData);
+                totalRow = model.Count();
+                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
+
+                var responeData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(query);
+
+                var paginationSet = new PaginationSet<ProductCategoryViewModel>()
+                {
+                    Items = responeData,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+
+                var respone = request.CreateResponse(HttpStatusCode.OK, paginationSet);
                 return respone;
             });
         }
