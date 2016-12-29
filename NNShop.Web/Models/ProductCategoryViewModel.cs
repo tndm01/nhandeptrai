@@ -10,6 +10,7 @@ namespace NNShop.Web.Models
     {
         public int ID { set; get; }
 
+        [Required(ErrorMessage = "Yêu cầu nhập tên danh mục.")]
         public string Name { set; get; }
 
         public string Alias { set; get; }
