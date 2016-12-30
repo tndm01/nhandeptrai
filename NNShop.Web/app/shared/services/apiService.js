@@ -1,47 +1,68 @@
-﻿
+﻿/// <reference path="Assets/admin/libs/angular/angular.js" />
 (function (app) {
     app.factory('apiService', apiService);
 
     apiService.$inject = ['$http', 'notificationService'];
 
-    function apiService($http, notificationService)
-    {
+    function apiService($http, notificationService) {
         return {
             get: get,
             post: post,
-            put: put
+            put: put,
+            del: del
         }
 
+        // Hàm post Create
         function post(url, data, success, failure) {
-            $http.post(url, data).then(function (resule) {
+            $http.post(url, data).then(function (result) {
                 success(result);
             }, function (error) {
-                if (error.Status === '401') {
-                    notificationService.displayError('Bạn không có quyền truy cập!');
-                } else if (failure != null) {
+                console.log(error.status)
+                if (error.status === 401) {
+                    notificationService.displayError('Authenticate is required');
+                }
+                else if (failure != null) {
                     failure(error);
                 }
             });
         }
 
-
+        //Hàm put Update
         function put(url, data, success, failure) {
-            $http.put(url, data).then(function (resule) {
+            $http.put(url, data).then(function (result) {
                 success(result);
             }, function (error) {
-                if (error.Status === '401') {
-                    notificationService.displayError('Bạn không có quyền truy cập!');
-                } else if (failure != null) {
+                console.log(error.status)
+                if (error.status === 401) {
+                    notificationService.displayError('Authenticate is required');
+                }
+                else if (failure != null) {
                     failure(error);
                 }
             });
         }
 
+        // Hàm delete Create
+        function del(url, data, success, failure) {
+            $http.delete(url, data).then(function (result) {
+                success(result);
+            }, function (error) {
+                console.log(error.status)
+                if (error.status === 401) {
+                    notificationService.displayError('Authenticate is required');
+                }
+                else if (failure != null) {
+                    failure(error);
+                }
+            });
+        }
+
+        //Hàm get
         function get(url, params, success, failure) {
             $http.get(url, params).then(function (result) {
                 success(result);
             }, function (error) {
-                failure(result);
+                failure(error);
             });
         }
     }

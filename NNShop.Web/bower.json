@@ -8,6 +8,8 @@
         "slimscroll": "*",
         "fastclick": "*",
         "jquery": "*",
-        "toastr": "*"
+        "toastr": "*",
+        "bootbox": "*",
+        "ngBootbox": "*"
     }
 }
