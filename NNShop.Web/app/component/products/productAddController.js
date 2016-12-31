@@ -1,7 +1,44 @@
-﻿(function (app) {
+﻿
+(function (app) {
     app.controller('productAddController', productAddController);
 
-    function productAddController() {
+    productAddController.inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService']
 
+    function productAddController(apiService, $scope, notificationService, $state, commonService) {
+        $scope.products = {
+            CreatedDate: new Date(),
+            Status: true
+        }
+        $scope.ckeditorOptions = {
+            language: 'vi',
+            height: '200px'
+        }
+
+        $scope.GetSeoTitle = GetSeoTitle;
+
+        function GetSeoTitle() {
+            $scope.products.Alias = commonService.getSeoTitle($scope.products.Name);
+        }
+        $scope.AddProduct = AddProduct;
+
+        function AddProduct() {
+            apiService.post('/api/product/create', $scope.products,
+                function (result) {
+                    notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
+                    $state.go('products');
+                }, function (error) {
+                    notificationService.displayError('Thêm mới không thành công.');
+                });
+        }
+
+        function loadParentCategory() {
+            apiService.get('api/productcategory/getallparents', null, function (result) {
+                $scope.parentCategories = result.data;
+            }, function () {
+                console.log('Cannot get list parent');
+            });
+        }
+        loadParentCategory();
     }
+
 })(angular.module('nnshop.products'));
