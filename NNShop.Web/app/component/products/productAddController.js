@@ -38,6 +38,13 @@
                 console.log('Cannot get list parent');
             });
         }
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.products.Image = fileUrl;
+            }
+            finder.popup();
+        }
         loadParentCategory();
     }
 
