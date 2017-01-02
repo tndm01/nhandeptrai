@@ -251,6 +251,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\component\home\rootController.js" />
+    <Content Include="app\component\login\loginController.js" />
+    <Content Include="app\component\login\loginView.html" />
     <Content Include="app\component\home\homeController.js" />
     <Content Include="app\component\home\homeView.html" />
     <Content Include="app\component\products\product.module.js" />
@@ -274,6 +277,7 @@
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\commonService.js" />
     <Content Include="app\shared\services\notificationService.js" />
+    <Content Include="app\shared\views\baseView.html" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
     <Content Include="Assets\admin\css\custom.css" />

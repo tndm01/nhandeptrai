@@ -20,13 +20,13 @@
         function loadProductDetail() {
             apiService.get('api/product/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.products = result.data;
-                $scope.moreImages = JSON.parse($scope.products.MoreImages);
+                $scope.moreImages = JSON.parse($scope.products.MoreImages);// Convert chuỗi JSON sang mảng
             }, function (error) {
                 notificationService.displayError(error.data);
             });
         }
         function UpdateProduct() {
-            $scope.products.MoreImages = JSON.stringify($scope.moreImages)
+            $scope.products.MoreImages = JSON.stringify($scope.moreImages)// Chuyển sang List mảng kiểu string để Add vào DB
             apiService.put('api/product/update', $scope.products,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được cập nhật.');
