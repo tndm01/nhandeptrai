@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NNShop.Common;
 using NNShop.Data.Infrastructure;
 using NNShop.Data.Repositories;
 using NNShop.Model.Models;
@@ -52,7 +53,10 @@ namespace NNShop.Service
 
         private IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepository, IProductTagRepository productTagRepository, ITagRepository tagRepository, IUnitOfWork unitOfWork)
+        public ProductService(IProductRepository productRepository, 
+            IProductTagRepository productTagRepository, 
+            ITagRepository tagRepository, 
+            IUnitOfWork unitOfWork)
         {
             this._productTagRepository = productTagRepository;
             this._tagRepository = tagRepository;
@@ -64,27 +68,27 @@ namespace NNShop.Service
         {
             var product = _productRepository.Add(Product);
             _unitOfWork.Commit();
-            //if (!string.IsNullOrEmpty(Product.Tags))
-            //{
-            //    string[] tags = Product.Tags.Split(',');
-            //    for (var i = 0; i < tags.Length; i++)
-            //    {
-            //        var tagId = StringHelper.ToUnsignString(tags[i]);
-            //        if (_tagRepository.Count(x => x.ID == tagId) == 0)
-            //        {
-            //            Tag tag = new Tag();
-            //            tag.ID = tagId;
-            //            tag.Name = tags[i];
-            //            tag.Type = CommonContants.ProductTag;
-            //            _tagRepository.Add(tag);
-            //        }
-            //        _productTagRepository.DeleteMulti(x => x.ProductID == product.ID);
-            //        ProductTag productTag = new ProductTag();
-            //        productTag.ProductID = Product.ID;
-            //        productTag.TagID = tagId;
-            //        _productTagRepository.Add(productTag);
-            //    }
-            //}
+            if (!string.IsNullOrEmpty(Product.Tags))
+            {
+                string[] tags = Product.Tags.Split(',');
+                for (var i = 0; i < tags.Length; i++)
+                {
+                    var tagId = StringHelper.ToUnsignString(tags[i]);
+                    if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                    {
+                        Tag tag = new Tag();
+                        tag.ID = tagId;
+                        tag.Name = tags[i];
+                        tag.Type = CommonContants.ProductTag;
+                        _tagRepository.Add(tag);
+                    }
+                    _productTagRepository.DeleteMulti(x => x.ProductID == product.ID);
+                    ProductTag productTag = new ProductTag();
+                    productTag.ProductID = Product.ID;
+                    productTag.TagID = tagId;
+                    _productTagRepository.Add(productTag);
+                }
+            }
             return product;
         }
 
@@ -119,26 +123,26 @@ namespace NNShop.Service
         public void Update(Product Product)
         {
             _productRepository.Update(Product);
-            //if (!string.IsNullOrEmpty(Product.Tags))
-            //{
-            //    string[] tags = Product.Tags.Split(',');
-            //    for (var i = 0; i < tags.Length; i++)
-            //    {
-            //        var tagId = StringHelper.ToUnsignString(tags[i]);
-            //        if (_tagRepository.Count(x => x.ID == tagId) == 0)
-            //        {
-            //            Tag tag = new Tag();
-            //            tag.ID = tagId;
-            //            tag.Name = tags[i];
-            //            tag.Type = CommonContants.ProductTag;
-            //        }
+            if (!string.IsNullOrEmpty(Product.Tags))
+            {
+                string[] tags = Product.Tags.Split(',');
+                for (var i = 0; i < tags.Length; i++)
+                {
+                    var tagId = StringHelper.ToUnsignString(tags[i]);
+                    if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                    {
+                        Tag tag = new Tag();
+                        tag.ID = tagId;
+                        tag.Name = tags[i];
+                        tag.Type = CommonContants.ProductTag;
+                    }
 
-            //        ProductTag productTag = new ProductTag();
-            //        productTag.ProductID = Product.ID;
-            //        productTag.TagID = tagId;
-            //        _productTagRepository.Add(productTag);
-            //    }
-            //}
+                    ProductTag productTag = new ProductTag();
+                    productTag.ProductID = Product.ID;
+                    productTag.TagID = tagId;
+                    _productTagRepository.Add(productTag);
+                }
+            }
             _unitOfWork.Commit();
         }
 
