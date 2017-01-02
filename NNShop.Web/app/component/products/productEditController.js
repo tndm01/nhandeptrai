@@ -1,19 +1,16 @@
-﻿
-(function (app) {
+﻿(function (app) {
     app.controller('productEditController', productEditController);
 
-    productEditController.inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService', '$stateParams']
+    productEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService', '$stateParams'];
 
     function productEditController(apiService, $scope, notificationService, $state, commonService, $stateParams) {
-        $scope.products = {
-            CreatedDate: new Date(),
-            Status: true
-        }
+        $scope.products = {};
         $scope.ckeditorOptions = {
-            language: 'vi',
+            languague: 'vi',
             height: '200px'
         }
-
+        $scope.UpdateProduct = UpdateProduct;
+        $scope.moreImages = [];
         $scope.GetSeoTitle = GetSeoTitle;
 
         function GetSeoTitle() {
@@ -21,28 +18,26 @@
         }
 
         function loadProductDetail() {
-            apiService.get('/api/product/getbyid/' + $stateParams.id, null, function (result) {
+            apiService.get('api/product/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.products = result.data;
+                $scope.moreImages = JSON.parse($scope.products.MoreImages);
             }, function (error) {
                 notificationService.displayError(error.data);
             });
         }
-
-        $scope.UpdateProduct = UpdateProduct;
-
         function UpdateProduct() {
-            apiService.put('/api/product/update', $scope.products,
+            $scope.products.MoreImages = JSON.stringify($scope.moreImages)
+            apiService.put('api/product/update', $scope.products,
                 function (result) {
-                    notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
+                    notificationService.displaySuccess(result.data.Name + ' đã được cập nhật.');
                     $state.go('products');
                 }, function (error) {
-                    notificationService.displayError('Thêm mới không thành công.');
+                    notificationService.displayError('Cập nhật không thành công.');
                 });
         }
-
-        function loadParentCategory() {
+        function loadProductCategory() {
             apiService.get('api/productcategory/getallparents', null, function (result) {
-                $scope.parentCategories = result.data;
+                $scope.productCategories = result.data;
             }, function () {
                 console.log('Cannot get list parent');
             });
@@ -50,11 +45,23 @@
         $scope.ChooseImage = function () {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
-                $scope.products.Image = fileUrl;
+                $scope.$apply(function () {
+                    $scope.product.Image = fileUrl;
+                })
             }
             finder.popup();
         }
-        loadParentCategory();
+        $scope.ChooseMoreImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                })
+
+            }
+            finder.popup();
+        }
+        loadProductCategory();
         loadProductDetail();
     }
 
