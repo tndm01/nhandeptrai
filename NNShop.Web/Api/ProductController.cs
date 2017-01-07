@@ -98,6 +98,7 @@ namespace NNShop.Web.Api
                     var newProduct = new Product();
                     newProduct.UpdateProduct(productVm);
                     newProduct.CreatedDate = DateTime.Now;
+                    newProduct.CreatedBy = User.Identity.Name;
                     _productService.Add(newProduct);
                     _productService.Save();
                     var responseData = Mapper.Map<Product, ProductViewModel>(newProduct);
@@ -124,6 +125,7 @@ namespace NNShop.Web.Api
                     var dbProduct = _productService.GetById(productVm.ID);
                     dbProduct.UpdateProduct(productVm);
                     dbProduct.UpdatedDate = DateTime.Now;
+                    dbProduct.UpdatedBy = User.Identity.Name;
                     _productService.Update(dbProduct);
                     _productService.Save();
                     var responseData = Mapper.Map<Product, ProductViewModel>(dbProduct);

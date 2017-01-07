@@ -1,10 +1,6 @@
 ﻿(function (app) {
     app.controller('productListController', productListController);
 
-    app.config(['$qProvider', function ($qProvider) {
-        $qProvider.errorOnUnhandledRejections(false);
-    }]);
-
     productListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox', '$filter'];
 
     function productListController($scope, apiService, notificationService, $ngBootbox, $filter) {

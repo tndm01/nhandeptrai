@@ -12,9 +12,11 @@
     "bootbox": "*",
     "ngBootbox": "*",
     "ckeditor": "*",
-    "ng-ckeditor": "*"
+    "ng-ckeditor": "*",
+    "angular-local-storage": "*",
+    "angular-loading-bar": "*"
   },
   "resolutions": {
-    "angular": ">=1.3.0"
+    "angular": "1.6.1"
   }
 }
