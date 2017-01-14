@@ -26,5 +26,26 @@ namespace NNShop.Web.Controllers
 
             return View();
         }
+
+        //Không thể gọi trực tiếp.
+        [ChildActionOnly]
+        public ActionResult Footer()
+        {
+            return PartialView();
+        }
+
+        //Không thể gọi trực tiếp.
+        [ChildActionOnly]
+        public ActionResult Header()
+        {
+            return PartialView();
+        }
+
+        //Không thể gọi trực tiếp.
+        [ChildActionOnly]
+        public ActionResult Category()
+        {
+            return PartialView();
+        }
     }
 }
