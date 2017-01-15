@@ -235,6 +235,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,6 +243,7 @@
     <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
@@ -4007,6 +4009,30 @@
     <Content Include="bin\System.Web.WebPages.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="Data\files\1.png" />
+    <Content Include="Data\files\11.png" />
+    <Content Include="Data\files\15780748_620021584848839_1465848386219031733_n.jpg" />
+    <Content Include="Data\files\17.png" />
+    <Content Include="Data\files\2.png" />
+    <Content Include="Data\files\3.png" />
+    <Content Include="Data\files\4.png" />
+    <Content Include="Data\files\40.png" />
+    <Content Include="Data\files\42.png" />
+    <Content Include="Data\files\Beach-Sunset-Pictures-HD-Wallpaper %286%29.jpg" />
+    <Content Include="Data\files\Capture1.PNG" />
+    <Content Include="Data\files\Capture123.PNG" />
+    <Content Include="Data\_thumbs\Files\1.png" />
+    <Content Include="Data\_thumbs\Files\11.png" />
+    <Content Include="Data\_thumbs\Files\15780748_620021584848839_1465848386219031733_n.jpg" />
+    <Content Include="Data\_thumbs\Files\17.png" />
+    <Content Include="Data\_thumbs\Files\2.png" />
+    <Content Include="Data\_thumbs\Files\3.png" />
+    <Content Include="Data\_thumbs\Files\4.png" />
+    <Content Include="Data\_thumbs\Files\40.png" />
+    <Content Include="Data\_thumbs\Files\42.png" />
+    <Content Include="Data\_thumbs\Files\Beach-Sunset-Pictures-HD-Wallpaper %286%29.jpg" />
+    <Content Include="Data\_thumbs\Files\Capture1.PNG" />
+    <Content Include="Data\_thumbs\Files\Capture123.PNG" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Libs\CKFinder.dll" />
@@ -4024,8 +4050,8 @@
   <ItemGroup>
     <Folder Include="app\shared\common\" />
     <Folder Include="app\shared\footer\" />
-    <Folder Include="Data\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

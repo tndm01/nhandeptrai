@@ -12,54 +12,54 @@ namespace NNShop.Web.Controllers
 {
     public class HomeController : Controller
     {
+        ICommonService _commonService;
         IProductCategoryService _productCategoryService;
+        IProductService _productService;
 
-        public HomeController(IProductCategoryService productCategoryService)
+        public HomeController(IProductCategoryService productCategory, ICommonService commonService, IProductService productService)
         {
-            this._productCategoryService = productCategoryService;
+            _commonService = commonService;
+            _productCategoryService = productCategory;
+            _productService = productService;
         }
 
+        // GET: Home
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Client)]
         public ActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel();
+            var lastestProductModel = _productService.GetLastest(4);
+            var topsaleProductModel = _productService.GetHotProduct(4);
+            var lastestProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(lastestProductModel);
+            var topSaleProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(topsaleProductModel);
+            homeViewModel.HotOffers = lastestProductViewModel;
+            homeViewModel.TopHotProducts = topSaleProductViewModel;
+            return View(homeViewModel);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        //Không thể gọi trực tiếp.
-        [ChildActionOnly]
-        public ActionResult Footer()
-        {
-            return PartialView();
-        }
-
-        //Không thể gọi trực tiếp.
+        //Header
         [ChildActionOnly]
         public ActionResult Header()
         {
             return PartialView();
         }
 
-        //Không thể gọi trực tiếp.
+        //Footer
         [ChildActionOnly]
+        public ActionResult Footer()
+        {
+            return PartialView();
+        }
+
+        //Category
+        [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult Category()
         {
             var model = _productCategoryService.GetAll();
-            var listProductCategoryViewModel = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
-
-            return PartialView(listProductCategoryViewModel);
+            var listCategoryViewModel = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
+            return PartialView(listCategoryViewModel);
         }
+
     }
 }

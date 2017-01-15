@@ -35,9 +35,9 @@
                     notificationService.displayError('Cập nhật không thành công.');
                 });
         }
-        function loadProductCategory() {
+        function loadParentCategory() {
             apiService.get('api/productcategory/getallparents', null, function (result) {
-                $scope.productCategories = result.data;
+                $scope.parentCategories = result.data;
             }, function () {
                 console.log('Cannot get list parent');
             });
@@ -61,8 +61,8 @@
             }
             finder.popup();
         }
-        loadProductCategory();
         loadProductDetail();
+        loadParentCategory();
     }
 
 })(angular.module('nnshop.products'));

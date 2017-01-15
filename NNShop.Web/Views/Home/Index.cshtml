@@ -1,4 +1,4 @@
-﻿
+﻿@model NNShop.Web.Models.HomeViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layouts.cshtml";
@@ -50,4 +50,148 @@
     </script>
     <!-- //flexSlider -->
 </div>
+
+@section homeProduct{
+    <div class="banner_bottom">
+        <div class="wthree_banner_bottom_left_grid_sub">
+        </div>
+        <div class="wthree_banner_bottom_left_grid_sub1">
+            <div class="col-md-4 wthree_banner_bottom_left">
+                <div class="wthree_banner_bottom_left_grid">
+                    <img src="/Assets/client/images/4.jpg" alt=" " class="img-responsive" />
+                    <div class="wthree_banner_bottom_left_grid_pos">
+                        <h4>Discount Offer <span>25%</span></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 wthree_banner_bottom_left">
+                <div class="wthree_banner_bottom_left_grid">
+                    <img src="/Assets/client/images/5.jpg" alt=" " class="img-responsive" />
+                    <div class="wthree_banner_btm_pos">
+                        <h3>introducing <span>best store</span> for <i>groceries</i></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 wthree_banner_bottom_left">
+                <div class="wthree_banner_bottom_left_grid">
+                    <img src="/Assets/client/images/6.jpg" alt=" " class="img-responsive" />
+                    <div class="wthree_banner_btm_pos1">
+                        <h3>Save <span>Upto</span> $10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Hot Offers</h3>
+            <div class="agile_top_brands_grids">
+            @foreach (var product in Model.HotOffers)
+            {
+                var url = "/" + product.Alias + ".p-" + product.ID + ".html";
+            <div class="col-md-3 top_brand_left">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <div class="tag"><img src="/Assets/client/images/tag.png" alt="#" class="img-responsive" /></div>
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+                                        <a href="@url"><img title="#" alt="#" src="@product.Image" /></a>
+                                        <p>@product.Name</p>
+                                        <h4>@product.Price.ToString("N0")
+                                        @if (product.Promotion.HasValue)
+                                        {
+                                            <span>@product.Promotion</span>
+                                        }
+                                        </h4>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <form action="#" method="post">
+                                            <fieldset>
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="business" value=" " />
+                                                <input type="hidden" name="item_name" value="Fortune Sunflower Oil" />
+                                                <input type="hidden" name="amount" value="7.99" />
+                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="currency_code" value="USD" />
+                                                <input type="hidden" name="return" value=" " />
+                                                <input type="hidden" name="cancel_return" value=" " />
+                                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+    <!-- fresh-vegetables -->
+    <div class="top-brands">
+    <div class="container">
+        <h3>Top Hot</h3>
+        <div class="agile_top_brands_grids">
+            @foreach (var topHot in Model.TopHotProducts)
+            {
+                var url = "/" + topHot.Alias + ".p-" + topHot.ID + ".html";
+                <div class="col-md-3 top_brand_left">
+                    <div class="hover14 column">
+                        <div class="agile_top_brand_left_grid">
+                            <div class="tag"><img src="/Assets/client/images/tag.png" alt="#" class="img-responsive" /></div>
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <a href="@url"><img title="#" alt="#" src="@topHot.Image" /></a>
+                                            <p>@topHot.Name</p>
+                                            <h4>
+                                                @topHot.Price.ToString("N0")
+                                            @if (topHot.Promotion.HasValue)
+                                            {
+                                                <span>@topHot.Promotion.Value.ToString("N0")</span>
+                                            }
+                                        </h4>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <form action="#" method="post">
+                                            <fieldset>
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="business" value=" " />
+                                                <input type="hidden" name="item_name" value="Fortune Sunflower Oil" />
+                                                <input type="hidden" name="amount" value="7.99" />
+                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="currency_code" value="USD" />
+                                                <input type="hidden" name="return" value=" " />
+                                                <input type="hidden" name="cancel_return" value=" " />
+                                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+    <!-- //fresh-vegetables -->
+}
 

@@ -248,8 +248,8 @@ ul.dropdown-menu.drp-mnu li a i {
     width: 20%;
 }
 .wthree_banner_bottom_left_grid_sub1{
-	float:right;
-	width:80%;
+	margin: 0 auto;
+    width: 85%;
 }
 .w3l_banner_nav_right{
 	float:right;
@@ -410,7 +410,7 @@ ul.dropdown-menu.drp-mnu li a i {
 /*-- //banner --*/
 /*-- banner_bottom --*/
 .banner_bottom,.top-brands,.fresh-vegetables,.w3l_banner_nav_right_banner3_btm,.testimonials,.team,.newsletter-top-serv-btm,.w3ls_w3l_banner_nav_right_grid_sub{
-	padding:5em 0 !important;
+	padding:2em 0 !important;
 }
 .wthree_banner_bottom_left {
     padding-left: 0;

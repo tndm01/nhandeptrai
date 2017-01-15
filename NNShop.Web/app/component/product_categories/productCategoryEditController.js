@@ -36,14 +36,15 @@
         }
 
         function loadParentCategory() {
-            apiService.get('/api/productCategory/getallparents', null, function (result) {
+            apiService.get('api/productCategory/getallparents', null, function (result) {
                 $scope.parentCategpries = result.data;
             }, function () {
                 console.log('Cannot get list parent');
             });
         }
-        loadParentCategory();
+        
         loadProductCategoryDetail();
+        loadParentCategory();
     }
 
 })(angular.module('nnshop.product_categories'));
