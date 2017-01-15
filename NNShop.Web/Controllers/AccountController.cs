@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace NNShop.Web.Controllers
 {
-    public class ProductController : Controller
+    public class AccountController : Controller
     {
-        // GET: Product
-        public ActionResult Detail(int id)
+        // GET: Account
+        public ActionResult Login()
         {
             return View();
         }
 
-        public ActionResult Category(int id)
+        public ActionResult Register()
         {
             return View();
         }

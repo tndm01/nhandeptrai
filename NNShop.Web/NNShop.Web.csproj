@@ -233,6 +233,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -4051,6 +4052,7 @@
     <Folder Include="app\shared\common\" />
     <Folder Include="app\shared\footer\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
