@@ -409,7 +409,8 @@ ul.dropdown-menu.drp-mnu li a i {
 }
 /*-- //banner --*/
 /*-- banner_bottom --*/
-.banner_bottom,.top-brands,.fresh-vegetables,.w3l_banner_nav_right_banner3_btm,.testimonials,.team,.newsletter-top-serv-btm,.w3ls_w3l_banner_nav_right_grid_sub{
+.banner_bottom,.top-brands,.fresh-vegetables,.w3l_banner_nav_right_banner3_btm,.testimonials,.team,.newsletter-top-serv-btm,
+_sub{
 	padding:2em 0 !important;
 }
 .wthree_banner_bottom_left {
