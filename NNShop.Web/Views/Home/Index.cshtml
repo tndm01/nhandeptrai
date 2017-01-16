@@ -102,10 +102,10 @@
                                     <div class="snipcart-thumb">
                                         <a href="@url"><img title="#" alt="#" src="@product.Image" /></a>
                                         <p>@product.Name</p>
-                                        <h4>@product.Price.ToString("N0")
+                                        <h4>@product.Price.ToString("N0") VND
                                         @if (product.Promotion.HasValue)
                                         {
-                                            <span>@product.Promotion</span>
+                                            <span style="color:red">@product.Promotion.Value.ToString("N0") VND</span>
                                         }
                                         </h4>
                                     </div>
@@ -157,10 +157,10 @@
                                             <a href="@url"><img title="#" alt="#" src="@topHot.Image" /></a>
                                             <p>@topHot.Name</p>
                                             <h4>
-                                                @topHot.Price.ToString("N0")
+                                                @topHot.Price.ToString("N0") VND
                                             @if (topHot.Promotion.HasValue)
                                             {
-                                                <span>@topHot.Promotion.Value.ToString("N0")</span>
+                                                <span style="color:red">@topHot.Promotion.Value.ToString("N0") VND</span>
                                             }
                                         </h4>
                                     </div>
