@@ -24,7 +24,11 @@ namespace NNShop.Web.Controllers
         // GET: Product
         public ActionResult Detail(int id)
         {
-            return View();
+            var productViewModel = _productService.GetById(id);
+            var viewModel = Mapper.Map<Product, ProductViewModel>(productViewModel);
+            var relatedProduct = _productService.GetReatedProducts(id, 8);
+            ViewBag.RelatedProduct = Mapper.Map<IEnumerable<Product>,IEnumerable<ProductViewModel>>(relatedProduct);
+            return View(viewModel);
         }
 
         public ActionResult Category(int id, int page = 1, string sort = "")
