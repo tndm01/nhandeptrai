@@ -14,7 +14,8 @@
     "ckeditor": "*",
     "ng-ckeditor": "*",
     "angular-local-storage": "*",
-    "angular-loading-bar": "*"
+    "angular-loading-bar": "*",
+    "jquery-ui": "*"
   },
   "resolutions": {
     "angular": "1.6.1"

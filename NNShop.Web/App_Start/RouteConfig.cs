@@ -15,8 +15,15 @@ namespace NNShop.Web
 
             routes.MapRoute(
                name: "About",
-               url: "gioi-thieu",
+               url: "gioi-thieu.html",
                defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
+               namespaces: new string[] { "NNShop.Web.Controller" }
+           );
+
+            routes.MapRoute(
+               name: "Search",
+               url: "tim-kiem.html",
+               defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
                namespaces: new string[] { "NNShop.Web.Controller" }
            );
 
