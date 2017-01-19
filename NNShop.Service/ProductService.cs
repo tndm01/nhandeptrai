@@ -26,7 +26,7 @@ namespace NNShop.Service
 
         IEnumerable<Product> GetHotProduct(int top);
 
-        IEnumerable<Product> GetListProductByCategoryIdPaging(int category, int page, int pageSize,string sort,  out int totalRow);
+        IEnumerable<Product> GetListProductByCategoryIdPaging(int category, int page, int pageSize, string sort, out int totalRow);
 
         IEnumerable<Product> Search(string keyword, int page, int pageSize, string sort, out int totalRow);
 
@@ -39,6 +39,8 @@ namespace NNShop.Service
         void Save();
 
         IEnumerable<Tag> GetListTagByProductId(int id);
+
+        Tag GetTag(string tagId);
 
         void IncreaseView(int id);
 
@@ -53,9 +55,9 @@ namespace NNShop.Service
 
         private IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepository, 
-            IProductTagRepository productTagRepository, 
-            ITagRepository tagRepository, 
+        public ProductService(IProductRepository productRepository,
+            IProductTagRepository productTagRepository,
+            ITagRepository tagRepository,
             IUnitOfWork unitOfWork)
         {
             this._productTagRepository = productTagRepository;
@@ -136,7 +138,6 @@ namespace NNShop.Service
                         tag.Name = tags[i];
                         tag.Type = CommonContants.ProductTag;
                     }
-
                     ProductTag productTag = new ProductTag();
                     productTag.ProductID = Product.ID;
                     productTag.TagID = tagId;
@@ -156,7 +157,7 @@ namespace NNShop.Service
             return _productRepository.GetMulti(x => x.Status && x.HotFlag == true).OrderByDescending(x => x.CreatedDate).Take(top);
         }
 
-        public IEnumerable<Product> GetListProductByCategoryIdPaging(int category, int page, int pageSize,string sort, out int totalRow)
+        public IEnumerable<Product> GetListProductByCategoryIdPaging(int category, int page, int pageSize, string sort, out int totalRow)
         {
             var query = _productRepository.GetMulti(x => x.Status && x.CategoryID == category);
 
@@ -239,13 +240,13 @@ namespace NNShop.Service
 
         public IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow)
         {
-            var model = _productRepository.GetMulti(x => x.Status
-            && x.ProductTags.Count(y => y.ProductID == x.ID) > 0
-            , new string[] { "ProductCategory", "ProductTags" });
+            var model = _productRepository.GetListProductByTag(tagId, page, pageSize, out totalRow);
+            return model;
+        }
 
-            totalRow = model.Count();
-
-            return model.OrderByDescending(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize);
+        public Tag GetTag(string tagId)
+        {
+            return _tagRepository.GetSingleByCondition(x=>x.ID == tagId);
         }
     }
 }

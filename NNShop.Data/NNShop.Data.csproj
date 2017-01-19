@@ -100,6 +100,10 @@
     <Compile Include="Migrations\201612142152066_Intergrated-AspnetIdentity.Designer.cs">
       <DependentUpon>201612142152066_Intergrated-AspnetIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701192025217_addforeignkey.cs" />
+    <Compile Include="Migrations\201701192025217_addforeignkey.Designer.cs">
+      <DependentUpon>201701192025217_addforeignkey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NnShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612142152066_Intergrated-AspnetIdentity.resx">
       <DependentUpon>201612142152066_Intergrated-AspnetIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701192025217_addforeignkey.resx">
+      <DependentUpon>201701192025217_addforeignkey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
