@@ -1,0 +1,17 @@
+﻿@model NNShop.Web.Models.PageViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<div class="banner">
+    <div class="w3l_banner_nav_right">
+        <div class="w3l_banner_nav_right_banner3">
+            <h3>Best Deals For New Products<span class="blink_me"></span></h3>
+        </div>
+        <h1>@Model.Name</h1>
+        @Html.Raw(Model.Content)
+    </div>
+    <div class="clearfix"></div>
+</div>
+

@@ -104,10 +104,19 @@
     <Compile Include="Migrations\201701192025217_addforeignkey.Designer.cs">
       <DependentUpon>201701192025217_addforeignkey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701220629010_AddTagIdentity.cs" />
+    <Compile Include="Migrations\201701220629010_AddTagIdentity.Designer.cs">
+      <DependentUpon>201701220629010_AddTagIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701220651064_RemoveTagIndentity.cs" />
+    <Compile Include="Migrations\201701220651064_RemoveTagIndentity.Designer.cs">
+      <DependentUpon>201701220651064_RemoveTagIndentity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NnShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
+    <Compile Include="Repositories\PageRepository.cs" />
     <Compile Include="Repositories\ProductCategoryRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProductTagRepository.cs" />
@@ -136,6 +145,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701192025217_addforeignkey.resx">
       <DependentUpon>201701192025217_addforeignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701220629010_AddTagIdentity.resx">
+      <DependentUpon>201701220629010_AddTagIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701220651064_RemoveTagIndentity.resx">
+      <DependentUpon>201701220651064_RemoveTagIndentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

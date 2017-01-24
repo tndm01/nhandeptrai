@@ -137,6 +137,7 @@ namespace NNShop.Service
                         tag.ID = tagId;
                         tag.Name = tags[i];
                         tag.Type = CommonContants.ProductTag;
+                        _tagRepository.Add(tag);
                     }
                     ProductTag productTag = new ProductTag();
                     productTag.ProductID = Product.ID;

@@ -14,13 +14,6 @@ namespace NNShop.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-               name: "About",
-               url: "gioi-thieu.html",
-               defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
-               namespaces: new string[] { "NNShop.Web.Controller" }
-           );
-
-            routes.MapRoute(
                name: "Search",
                url: "tim-kiem.html",
                defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
@@ -40,6 +33,13 @@ namespace NNShop.Web
                defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
                namespaces: new string[] { "NNShop.Web.Controller" }
            );
+
+            routes.MapRoute(
+               name: "Page",
+               url: "trang/{alias}.html",
+               defaults: new { controller = "Page", action = "Index", alias = UrlParameter.Optional },
+               namespaces: new string[] { "NNShop.Web.Controller" }
+            );
 
             routes.MapRoute(
                 name: "Product Category",
