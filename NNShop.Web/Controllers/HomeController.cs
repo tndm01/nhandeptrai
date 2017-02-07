@@ -48,6 +48,7 @@ namespace NNShop.Web.Controllers
         [ChildActionOnly]
         public ActionResult Footer()
         {
+            ViewBag.Time = DateTime.Now.ToString("T");
             return PartialView();
         }
 

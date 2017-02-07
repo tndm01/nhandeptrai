@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using NNShop.Common;
@@ -14,20 +12,22 @@ namespace NNShop.Web.Controllers
 {
     public class ProductController : Controller
     {
-        IProductService _productService;
-        IProductCategoryService _productCategoryService;
+        private IProductService _productService;
+        private IProductCategoryService _productCategoryService;
+
         public ProductController(IProductService productService, IProductCategoryService productCategoryService)
         {
             _productService = productService;
             _productCategoryService = productCategoryService;
         }
+
         // GET: Product
         public ActionResult Detail(int id)
         {
             var productViewModel = _productService.GetById(id);
             var viewModel = Mapper.Map<Product, ProductViewModel>(productViewModel);
             var relatedProduct = _productService.GetReatedProducts(id, 8);
-            ViewBag.RelatedProduct = Mapper.Map<IEnumerable<Product>,IEnumerable<ProductViewModel>>(relatedProduct);
+            ViewBag.RelatedProduct = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(relatedProduct);
             ViewBag.Tags = Mapper.Map<IEnumerable<Tag>, IEnumerable<TagViewModel>>(_productService.GetListTagByProductId(id));
 
             return View(viewModel);
@@ -37,8 +37,8 @@ namespace NNShop.Web.Controllers
         {
             int pageSize = int.Parse(ConfigHelper.GetByKey("pageSize"));
             int totalRow = 0;
-            var productModel = _productService.GetListProductByCategoryIdPaging(id, page, pageSize ,sort , out totalRow);
-            var productViewModel = Mapper.Map<IEnumerable<Product>,IEnumerable<ProductViewModel>>(productModel);
+            var productModel = _productService.GetListProductByCategoryIdPaging(id, page, pageSize, sort, out totalRow);
+            var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
 
             var category = _productCategoryService.GetById(id);
@@ -60,7 +60,7 @@ namespace NNShop.Web.Controllers
             return Json(new
             {
                 data = model
-            },JsonRequestBehavior.AllowGet);
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ListByTag(string tagId, int page = 1)
@@ -71,7 +71,7 @@ namespace NNShop.Web.Controllers
             var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
 
-            ViewBag.Tag = Mapper.Map<Tag,TagViewModel>(_productService.GetTag(tagId));
+            ViewBag.Tag = Mapper.Map<Tag, TagViewModel>(_productService.GetTag(tagId));
             var paginationSet = new PaginationSet<ProductViewModel>()
             {
                 Items = productViewModel,
