@@ -88,11 +88,8 @@
                 }
             }
             apiService.get('/api/product/getall', config, function (result) {
-                if (result.data.TotalCount == 0) {
-                    notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
-                }
                 $scope.products = result.data.Items;
-                $scope.page = result.data.Page;
+                $scope.page = result.data.Pages;
                 $scope.pagesCount = result.data.TotalPages;
                 $scope.totalCount = result.data.TotalCount;
             }, function () {

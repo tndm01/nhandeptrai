@@ -43,6 +43,8 @@ namespace NNShop.Model.Models
 
         public int Quantity { set; get; }
 
+        public decimal OriginalPrice { set; get; }
+
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategory { set; get; }
 

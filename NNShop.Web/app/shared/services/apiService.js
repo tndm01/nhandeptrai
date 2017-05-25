@@ -20,11 +20,12 @@
             }, function (error) {
                 console.log(error.status)
                 if (error.status === 401) {
-                    notificationService.displayError('Authenticate is required');
+                    notificationService.displayError('Bạn không có quyền.');
                 }
                 else if (failure != null) {
                     failure(error);
                 }
+
             });
         }
 
@@ -36,7 +37,7 @@
             }, function (error) {
                 console.log(error.status)
                 if (error.status === 401) {
-                    notificationService.displayError('Authenticate is required');
+                    notificationService.displayError('Bạn không có quyền!');
                 }
                 else if (failure != null) {
                     failure(error);
@@ -44,7 +45,7 @@
             });
         }
 
-        // Hàm delete Create
+        // Hàm delete 
         function del(url, data, success, failure) {
             authenticationService.setHeader();
             $http.delete(url, data).then(function (result) {
@@ -52,7 +53,7 @@
             }, function (error) {
                 console.log(error.status)
                 if (error.status === 401) {
-                    notificationService.displayError('Authenticate is required');
+                    notificationService.displayError('Bạn không có quyền!');
                 }
                 else if (failure != null) {
                     failure(error);
@@ -66,7 +67,13 @@
             $http.get(url, params).then(function (result) {
                 success(result);
             }, function (error) {
-                failure(error);
+                console.log(error.status)
+                if (error.status === 401) {
+                    notificationService.displayError('Bạn không có quyền!');
+                }
+                else if (failure != null) {
+                    failure(error);
+                }
             });
         }
     }

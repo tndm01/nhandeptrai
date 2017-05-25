@@ -5,6 +5,7 @@ using NNShop.Web.Infrastructure.Core;
 namespace NNShop.Web.Api
 {
     [RoutePrefix("api/home")]
+    [Authorize]
     public class HomeController : ApiControllerBase
     {
         IErrorService _errorService;

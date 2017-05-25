@@ -14,8 +14,8 @@ namespace NNShop.Web
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            //config.SuppressDefaultHostAuthentication();
-            //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
             new DefaultContractResolver { IgnoreSerializableAttribute = true };

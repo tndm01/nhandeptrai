@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Validation;
     using System.Diagnostics;
@@ -20,23 +19,9 @@
 
         protected override void Seed(NNShop.Data.NnShopDbContext context)
         {
-            CreateProductCategorySample(context);
-            CreateSlide(context);
             //  This method will be called after migrating to the latest version.
             CreatePage(context);
-            CreateContactDetail(context);
             CreateUser(context);
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
         }
 
         private void CreateUser(NnShopDbContext context)
@@ -47,26 +32,25 @@
 
             var user = new ApplicationUser()
             {
-                UserName = "tedu",
-                Email = "tedu.international@gmail.com",
+                UserName = "tndm00",
+                Email = "tthnhanit@gmail.com",
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
-                FullName = "Technology Education"
-
+                FullName = "Trương Thanh Nhân"
             };
-
-            manager.Create(user, "123456$");
-
-            //if (!roleManager.Roles.Any())
-            //{
-            //    roleManager.Create(new IdentityRole { Name = "Admin" });
-            //    roleManager.Create(new IdentityRole { Name = "User" });
-            //}
-
-            //var adminUser = manager.FindByEmail("tedu.international@gmail.com");
-
-            //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+            if (manager.Users.Count(x => x.UserName == "tndm00") == 0)
+            {
+                manager.Create(user, "123456$");
+                if (!roleManager.Roles.Any())
+                {
+                    roleManager.Create(new IdentityRole { Name = "Admin" });
+                    roleManager.Create(new IdentityRole { Name = "User" });
+                }
+                var adminUser = manager.FindByEmail("tthnhanit@gmail.com");
+                manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+            }
         }
+
         private void CreateProductCategorySample(NNShop.Data.NnShopDbContext context)
         {
             if (context.ProductCategories.Count() == 0)
@@ -81,7 +65,6 @@
                 context.ProductCategories.AddRange(listProductCategory);
                 context.SaveChanges();
             }
-
         }
 
         private void CreateSlide(NnShopDbContext context)
@@ -98,7 +81,7 @@
                         Image ="/Assets/client/images/bag.jpg",
                         Content =@"	<h2>FLAT 50% 0FF</h2>
                                 <label>FOR ALL PURCHASE <b>VALUE</b></label>
-                                <p>Lorem ipsum dolor sit amet, consectetur 
+                                <p>Lorem ipsum dolor sit amet, consectetur
                             adipisicing elit, sed do eiusmod tempor incididunt ut labore et </ p >
                         <span class=""on-get"">GET NOW</span>" },
                     new Slide() {
@@ -131,7 +114,6 @@
                         Alias = "gioi-thieu",
                         Content = @"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium ",
                         Status = true
-
                     };
                     context.Pages.Add(page);
                     context.SaveChanges();
@@ -147,7 +129,6 @@
                         }
                     }
                 }
-
             }
         }
 
@@ -159,16 +140,15 @@
                 {
                     var contactDetail = new NNShop.Model.Models.ContactDetail()
                     {
-                        Name = "Shop thời trang TEDU",
-                        Address = "Ngõ 77 Xuân La",
-                        Email = "tedu@gmail.com",
+                        Name = "Shop thời trang NNShop",
+                        Address = "Triệu Yên Quận 10",
+                        Email = "tthnhanit@gmail.com",
                         Lat = 21.0633645,
                         Lng = 105.8053274,
                         Phone = "095423233",
-                        Website = "http://tedu.com.vn",
+                        Website = "http://zing.vn",
                         Orther = "",
                         Status = true
-
                     };
                     context.ContactDetails.Add(contactDetail);
                     context.SaveChanges();
@@ -184,7 +164,6 @@
                         }
                     }
                 }
-
             }
         }
     }

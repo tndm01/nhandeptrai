@@ -59,6 +59,7 @@
         <div class="agileinfo_single">
             <h5>@Model.Name</h5>
             <div class="col-md-4 agileinfo_single_left">
+                <img src="/Assets/client/css/inew.gif" height="13" />
                 <img id="example" src="@Model.Image" alt="@Model.Name" class="img-responsive" />
             </div>
             <div class="col-md-8 agileinfo_single_right">
@@ -93,6 +94,12 @@
                         </h4>
                     </div>
                     <div class="w3agile_description">
+                        <h4>Sản phẩm còn: @Model.Quantity</h4>
+                    </div>
+                    <div class="w3agile_description">
+                        <h4>Mô tả: @Model.Description</h4>
+                    </div>
+                    <div class="w3agile_description">
                         <h4>Tag :</h4>
                         <ul class="list-inline">
                             @foreach (var tag in (IEnumerable<NNShop.Web.Models.TagViewModel>)ViewBag.Tags)
@@ -103,7 +110,7 @@
                         </ul>
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
-                        <a href="/gioi-hang/@Model.ID"><input type="submit" name="submit" value="Thêm vào giỏ" class="button" /></a>
+                        <a href="#"><input type="submit" class="btnAddToCart button" name="submit" data-id="@Model.ID" value="Mua hàng" /></a>
                     </div>
                 </div>
             </div>
@@ -122,38 +129,45 @@
         <h3>Sản phẩm nổi bật</h3>
         <div class="w3ls_w3l_banner_nav_right_grid1">
             <h6>Sản phẩm liên quan</h6>
-            @foreach (var product in relatedProducts)
+            @if (relatedProducts.Count() > 0)
             {
-                var url = "/" + product.Alias + ".p-" + product.ID + ".html";
-                <div class="col-md-3 w3ls_w3l_banner_left">
-                    <div class="hover14 column">
-                        <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                            <div class="agile_top_brand_left_grid_pos">
-                                <img src="/Assets/client/images/offer.png" alt="#" class="img-responsive" />
-                            </div>
-                            <div class="agile_top_brand_left_grid1">
-                                <figure>
-                                    <div class="snipcart-item block">
-                                        <div class="snipcart-thumb">
-                                            <a href="@url"><img src="@product.Image" alt="@product.Name" class="img-responsive" /></a>
-                                            <p>@product.Name</p>
-                                            <h4>
-                                                @product.Price.ToString("N0") VND
-                                                @if (product.Promotion.HasValue)
-                                                {
-                                                    <span style="color:red">@product.Promotion.Value.ToString("N0") VND</span>
-                                                }
-                                            </h4>
+                foreach (var product in relatedProducts)
+                {
+                    var url = "/" + product.Alias + ".p-" + product.ID + ".html";
+                    <div class="col-md-3 w3ls_w3l_banner_left">
+                        <div class="hover14 column" style="margin-top:15px">
+                            <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                                <div class="agile_top_brand_left_grid_pos">
+                                    <img src="/Assets/client/images/offer.png" alt="#" class="img-responsive" />
+                                </div>
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="@url"><img src="@product.Image" alt="@product.Name" class="img-responsive" /></a>
+                                                <p>@product.Name</p>
+                                                <h4>
+                                                    @product.Price.ToString("N0") VND
+                                                    @if (product.Promotion.HasValue)
+                                                    {
+                                                        <span style="color:red">@product.Promotion.Value.ToString("N0") VND</span>
+                                                    }
+                                                </h4>
+                                            </div>
+                                            <div class="snipcart-details">
+                                                <a href="#" class="btnAddToCart" data-id="@product.ID"><input type="submit" name="submit" value="Mua hàng" class="button" /></a>
+                                            </div>
                                         </div>
-                                        <div class="snipcart-details">
-                                            <a href="/gioi-hang/@product.ID"><input type="submit" name="submit" value="Thêm vào giỏ" class="button" /></a>
-                                        </div>
-                                    </div>
-                                </figure>
+                                    </figure>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
+            }
+            else
+            {
+                <span>Không có sản phẩm liên quan nào</span>
             }
 
             <div class="clearfix"> </div>

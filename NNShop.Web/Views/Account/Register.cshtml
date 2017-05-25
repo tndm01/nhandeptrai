@@ -1,0 +1,68 @@
+﻿@model NNShop.Web.Models.RegisterViewModel
+@using BotDetect.Web.Mvc;
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+<div class="w3l_banner_nav_right_banner3">
+    <h3>Đăng nhập & Đăng ký!<span class="blink_me"></span></h3>
+</div>
+<div class="w3_login">
+    <h3>Sign In & Sign Up</h3>
+    <div class="w3_login_module">
+        <div class="module form-module">
+            <div class="toggle">
+                <i class="fa fa-times fa-pencil"></i>
+                <div class="tooltip">Click Me</div>
+            </div>
+            <div class="form">
+                <h2>Tạo tài khoản</h2>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken();
+                    @Html.ValidationSummary(false,"",new { @class = "error"});
+                    if (ViewData["SuccessMsg"] != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <strong>Chúc mừng bạn! </strong> đã đăng ký thành công.
+                            <br />Vui lòng <a href="/dang-nhap.html">Click</a> để đăng nhập.
+                        </div>
+                    }
+                    <span>Họ tên<label>*</label></span>
+                    @Html.TextBoxFor(model=> model.FullName)
+                    <span>Tài khoản<label>*</label></span>
+                    @Html.TextBoxFor(model=>model.UserName)
+                    <span>Mật khẩu<label>*</label></span>
+                    @Html.PasswordFor(model => model.Password)
+                    <span>Email<label>*</label></span>
+                    @Html.TextBoxFor(model => model.Email)
+                    <span>Điện thoại<label>*</label></span>
+                    @Html.TextBoxFor(model => model.PhoneNumber)
+                    <span>Địa chỉ<label>*</label></span>
+                    @Html.TextBoxFor(model => model.Address)
+                    MvcCaptcha contactCaptcha = new MvcCaptcha("registerCaptcha");
+                    @Html.Captcha(contactCaptcha)
+                    @Html.TextBox("CaptchaCode");
+                    <input type="submit" value="Đăng ký" />
+                }
+
+            </div>
+            <div class="cta"><a href="#">Forgot your password?</a></div>
+        </div>
+    </div>
+    <script>
+        $('.toggle').click(function () {
+            // Switches the Icon
+            $(this).children('i').toggleClass('fa-pencil');
+            // Switches the forms
+            $('.form').animate({
+                height: "toggle",
+                'padding-top': 'toggle',
+                'padding-bottom': 'toggle',
+                opacity: "toggle"
+            }, "slow");
+        });
+    </script>
+</div>

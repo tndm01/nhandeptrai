@@ -1,8 +1,13 @@
 ﻿/// <reference path="/Assets/admin/libs/angular/angular.js" />
 (function () {
     angular.module('nnshop',
-        ['nnshop.products'
+            ['nnshop.products'
             , 'nnshop.common'
+            , 'nnshop.application_groups'
+            , 'nnshop.application_roles'
+            , 'nnshop.application_users'
+            , 'nnshop.statistic'
+            , 'nnshop.orders'
             , 'nnshop.product_categories'])
         .config(config)
         .config(configAuthentication);

@@ -11,7 +11,6 @@ namespace NNShop.Data.Repositories
     //Để định nghĩa các phương thức mà k có sẵn trong Repository
     public interface IProductCategoryRepository : IRepository<ProductCategory>
     {
-        //Định nghĩa phương thức không có sẵn trong Repository
         IEnumerable<ProductCategory> GetAlias(string alias);
     }
 

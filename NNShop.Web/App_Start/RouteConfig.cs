@@ -12,6 +12,8 @@ namespace NNShop.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            // BotDetect requests must not be routed
+            routes.IgnoreRoute("{*botdetect}", new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
             routes.MapRoute(
                name: "Search",
@@ -21,15 +23,43 @@ namespace NNShop.Web
            );
 
             routes.MapRoute(
+               name: "Contact",
+               url: "lien-he.html",
+               defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+               namespaces: new string[] { "NNShop.Web.Controller" }
+           );
+
+            routes.MapRoute(
+              name: "Cart",
+              url: "gio-hang.html",
+              defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional },
+              namespaces: new string[] { "NNShop.Web.Controller" }
+          );
+
+            routes.MapRoute(
+              name: "Checkout",
+              url: "gio-hang.html",
+              defaults: new { controller = "ShoppingCart", action = "CheckOut", id = UrlParameter.Optional },
+              namespaces: new string[] { "NNShop.Web.Controller" }
+          );
+
+            routes.MapRoute(
+               name: "Product List",
+               url: "san-pham.html",
+               defaults: new { controller = "Product", action = "GetListALlProduct", id = UrlParameter.Optional },
+               namespaces: new string[] { "NNShop.Web.Controller" }
+           );
+
+            routes.MapRoute(
                name: "Login",
-               url: "dang-ki",
+               url: "dang-nhap.html",
                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
                namespaces: new string[] { "NNShop.Web.Controller" }
            );
 
             routes.MapRoute(
                name: "Register",
-               url: "dang-nhap",
+               url: "dang-ky.html",
                defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
                namespaces: new string[] { "NNShop.Web.Controller" }
            );

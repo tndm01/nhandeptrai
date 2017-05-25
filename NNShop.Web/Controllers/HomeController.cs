@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using NNShop.Common;
 using NNShop.Model.Models;
 using NNShop.Service;
 using NNShop.Web.Models;
@@ -24,7 +25,7 @@ namespace NNShop.Web.Controllers
         }
 
         // GET: Home
-        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Client)]
+        //[OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             var homeViewModel = new HomeViewModel();
@@ -38,10 +39,17 @@ namespace NNShop.Web.Controllers
         }
 
         //Header
-        [ChildActionOnly]
+        //[ChildActionOnly]
+        //[OutputCache(Duration = 3600)]
         public ActionResult Header()
         {
-            return PartialView();
+            var cart = Session[CommonContants.SessionCart];
+            var list = new List<ShoppingCartViewModel>();
+            if(cart != null)
+            {
+                list = (List<ShoppingCartViewModel>)cart;
+            }
+            return PartialView(list);
         }
 
         //Footer

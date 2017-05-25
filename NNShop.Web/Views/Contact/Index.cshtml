@@ -1,0 +1,75 @@
+﻿@model NNShop.Web.Models.FeedbackViewModel
+@using BotDetect.Web.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+@section footerJS{
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk3Eeu6MXm1Y6qil2hO6j89kckY5nnSTo"></script>
+    <script src="/Assets/client/js/controller/contact.js"></script>
+}
+<input type="hidden" id="hidAddress" value="@Model.ContactDetail.Name<br />Điện thoại:@Model.ContactDetail.Phone <br>Địa chỉ: @Model.ContactDetail.Address" />
+<input type="hidden" id="hidLat" value="@Model.ContactDetail.Lat" />
+<input type="hidden" id="hidLng" value="@Model.ContactDetail.Lng" />
+<input type="hidden" id="hidName" value="@Model.ContactDetail.Name" />
+<style>
+    #map {
+        height: 400px;
+    }
+</style>
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+<div class="w3l_banner_nav_right_banner3">
+    <h3>Liên hệ với chúng tôi!<span class="blink_me"></span></h3>
+</div>
+<div class="mail">
+    <h3>Liên hệ với chúng tôi</h3>
+    <div class="agileinfo_mail_grids">
+        <div class="col-md-4 agileinfo_mail_grid_left">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i></li>
+                <li>Đia chỉ: <span>@Model.ContactDetail.Address.</span></li>
+            </ul>
+            <ul>
+                <li><i class="fa fa-envelope" aria-hidden="true"></i></li>
+                <li>email<span><a href="@Model.ContactDetail.Email">@Model.ContactDetail.Email</a></span></li>
+            </ul>
+            <ul>
+                <li><i class="fa fa-phone" aria-hidden="true"></i></li>
+                <li>Điện thoại: <span>@Model.ContactDetail.Phone</span></li>
+            </ul>
+        </div>
+        <div class="col-md-8 agileinfo_mail_grid_right">
+            @using (Html.BeginForm("SendFeedback", "Contact", FormMethod.Post))
+            {
+                if(ViewData["SuccessMsg"] != null)
+                {
+                    <div class="alert alert-success" role="alert">
+                        <strong>Chúc mừng bạn! </strong> gửi phản hồi thành công.
+                        <br/>Chúng tôi sẽ liên hệ sớm nhất có thể.
+                    </div>
+                }
+                @Html.ValidationSummary(false, "", new { @class = "error" });
+                @Html.Label("Họ tên*");
+                @Html.TextBoxFor(model => model.Name, new { @class = "textbox" });
+                @Html.Label("Email*")
+                @Html.TextBoxFor(model => model.Email, new { @class = "textbox" });
+                <div class="clearfix"> </div>
+                @Html.Label("Tin gửi*")
+                @Html.TextAreaFor(model => model.Message);
+                MvcCaptcha contactCaptcha = new MvcCaptcha("contactCaptcha");
+                @Html.Captcha(contactCaptcha)
+                @Html.TextBox("CaptchaCode");
+                <br />
+                <input type="submit"  value="Send" style="margin-top:15px"/>
+                <input type="reset" value="Clear">
+            }
+            
+        </div>
+        <div class="clearfix"> </div>
+
+    </div>
+</div>
+<div id="map"></div>
+

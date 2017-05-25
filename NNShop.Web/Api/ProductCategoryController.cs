@@ -15,6 +15,7 @@ using NNShop.Web.Models;
 namespace NNShop.Web.Api
 {
     [RoutePrefix("api/productcategory")]
+    [Authorize]
     public class ProductCategoryController : ApiControllerBase
     {
         private IProductCategoryService _productCategoryService;
@@ -48,7 +49,7 @@ namespace NNShop.Web.Api
             {
                 var model = _productCategoryService.GetById(id);
 
-                var responeData = Mapper.Map<ProductCategory,ProductCategoryViewModel>(model);
+                var responeData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(model);
 
                 var respone = request.CreateResponse(HttpStatusCode.OK, responeData);
                 return respone;
@@ -71,7 +72,7 @@ namespace NNShop.Web.Api
                 var paginationSet = new PaginationSet<ProductCategoryViewModel>()
                 {
                     Items = responeData,
-                    Page = page,
+                    Pages = page,
                     TotalCount = totalRow,
                     TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
                 };
@@ -171,7 +172,7 @@ namespace NNShop.Web.Api
                 else
                 {
                     var ids = new JavaScriptSerializer().Deserialize<List<int>>(listId);
-                    foreach(var item in ids)
+                    foreach (var item in ids)
                     {
                         _productCategoryService.Delete(item);
                     }

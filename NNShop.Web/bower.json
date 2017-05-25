@@ -15,7 +15,14 @@
     "ng-ckeditor": "*",
     "angular-local-storage": "*",
     "angular-loading-bar": "*",
-    "jquery-ui": "*"
+    "jquery-ui": "*",
+    "mustache": "*",
+    "numeral": "*",
+    "jquery-validation": "*",
+    "checklist-model": "*",
+    "angular-chart.js": "*",
+    "angular-ui-select": "*",
+    "angular-sanitize": "*"
   },
   "resolutions": {
     "angular": "1.6.1"

@@ -89,7 +89,7 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
     color: #fff;
     text-decoration: none;
     padding: .5em 3em;
-    background: #84C639;
+    background: #fff;
 	display:block;
 }
 .w3l_search{
@@ -132,9 +132,9 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
 	font-size: .74em;
     color: #fff;
     padding: .5em 1.5em;
-    background: #FA1818;
+    background: red;
     display: block;
-	text-decoration:none;
+    text-decoration: none;
 }
 ul.dropdown-menu.drp-mnu {
     right: 0;
@@ -2083,7 +2083,7 @@ ul.wmuSliderPagination {
 }
 .agileinfo_mail_grid_right textarea{
 	min-height: 200px;
-    margin: 1em 1.1em;
+    margin: 1em 0.1em;
     width: 95.9% !important;
 }
 .agileinfo_mail_grid_right input[type="submit"],.agileinfo_mail_grid_right input[type="reset"]{

@@ -37,19 +37,27 @@
                 </div>
               
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Danh mục cha</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Danh mục</label>
                     <div class="col-sm-10">
-                        <select name="categoryID" required class="form-control" ng-model="products.CategoryID" ng-options="option.ID as option.Name for option in parentCategories">
-                            <option value="">Chọn Danh mục</option>
+                        <select name="parentId" class="form-control" ng-model="products.CategoryID" ng-options="option.ID as option.Name for option in flatFolders">
+                            <option value="">Danh mục gốc</option>
                         </select>
-                        <span ng-show="frmAddProduct.categoryID.$invalid" class="has-error">Phải nhập danh mục</span>
-                        <input type="hidden" name="parentId" ng-model="products.CategoryID" />
+                        <span ng-show="frmImportProduct.CategoryID.$invalid" class="has-error">Phải chọn danh mục</span>
+
+                        <input type="hidden" name="categoryId" ng-model="products.CategoryID" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Bảo hành</label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" value="0" name="warranty"  ng-model="products.Warranty">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Giá nhập</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" required name="originalPrice" ng-model="products.OriginalPrice">
+                        <span ng-show="frmAddProduct.originalPrice.$invalid" class="has-error">Phải nhập giá</span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -65,6 +73,14 @@
                         <input type="number" class="form-control" name="price" ng-model="products.PromotionPrice">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Số lượng</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" required name="quantity" ng-model="products.Quantity">
+                        <span ng-show="frmAddProduct.quantity.$invalid" class="has-error">Phải nhập số lượng</span>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Hình ảnh</label>
                     <div class="col-sm-10">
@@ -84,7 +100,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Mô tả ngắn</label>
                     <div class="col-sm-10">
-                        <textarea type="text" class="form-control" ckeditor="ckeditorOoptions" name="content" ng-model="products.Content"></textarea>
+                        <textarea type="text" class="form-control" ckeditor="ckeditorOoptions" name="content" ng-model="products.Description"></textarea>
                     </div>
                 </div>
                 <div class="form-group">

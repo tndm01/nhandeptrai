@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-    <title>NNShop Buy Everything</title>
+    <title>Shop bán máy tính LQK</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,6 +17,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
                function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
+    <link href="/Assets/client/css/customer.css" rel="stylesheet" />
     <link href="/Assets/client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/Assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
@@ -24,11 +25,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="/Assets/admin/libs/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
     <!-- //font-awesome icons -->
     <!-- js -->
+    @*<script lang="javascript">
+        (function () {
+            var pname = ((document.title != '') ? document.title : document.querySelector('h1').innerHTML);
+            var ga = document.createElement('script'); ga.type = 'text/javascript';
+            ga.async = 1; ga.src = '//live.vnpgroup.net/js/web_client_box.php?hash=37e0fe14771eed373b8bc1ba53b2a1e4&data=eyJzc29faWQiOjQ2NDMwMzQsImhhc2giOiJiZmIyMjlmMzBlNmRmOGFmMTVlZjUwYTU1YTI1YTBhZCJ9&pname=' + pname; var s = document.getElementsByTagName('script');
+            s[0].parentNode.insertBefore(ga, s[0]);
+        })();
+    </script>*@	
     <script src="/Assets/client/js/jquery-1.11.1.min.js"></script>
     <!-- //js -->
-    @*<link href='/Assets/client/fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-    <link href='/Assets/client/fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>*@
-    <!-- start-smoth-scrolling -->
+    
     <script type="text/javascript" src="/Assets/client/js/move-top.js"></script>
     <script type="text/javascript" src="/Assets/client/js/easing.js"></script>
     <script type="text/javascript">
@@ -64,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="logo_products">
         <div class="container">
             <div class="w3ls_logo_products_left">
-                <h1><a href="/"><span>NN</span> Shop</a></h1>
+                <h1><a href="/"> Shop </a></h1>
             </div>
             <div class="w3ls_logo_products_left1">
                 <ul class="special_items">
@@ -74,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#">Dịch vụ</a></li>
                 </ul>
             </div>
-            <div class="w3ls_logo_products_left1">
+            <div class="w3ls_logo_products_left1" style="float:right">
                 <ul class="phone_email">
                     <li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
                     <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:tthnhanit@gmail.com">tthnhanit@gmail.com</a></li>
@@ -129,7 +136,13 @@ $(document).ready(function(){
     <!-- //here ends scrolling icon -->
     <script src="/Assets/client/js/minicart.min.js"></script>
     <script src="/Assets/admin/libs/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/Assets/admin/libs/mustache/mustache.js"></script>
+    <script src="/Assets/admin/libs/numeral/numeral.js"></script>
+    <script src="/Assets/client/js/controller/shoppingCart.js"></script>
+    <script src="/Assets/admin/libs/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/Assets/admin/libs/jquery-validation/dist/additional-methods.min.js"></script>
     <script src="/Assets/client/js/common.js"></script>
+    
     <script>
 	// Mini Cart
 	paypal.minicart.render({

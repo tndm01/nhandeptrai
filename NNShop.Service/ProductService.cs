@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NNShop.Common;
 using NNShop.Data.Infrastructure;
 using NNShop.Data.Repositories;
@@ -21,6 +19,8 @@ namespace NNShop.Service
         IEnumerable<Product> GetAll();
 
         IEnumerable<Product> GetAll(string keyword);
+
+        IEnumerable<Product> GetAllListProduct(int page, int pageSize, out int totalRow);
 
         IEnumerable<Product> GetLastest(int top);
 
@@ -45,6 +45,8 @@ namespace NNShop.Service
         void IncreaseView(int id);
 
         IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow);
+
+        bool sellProduct(int productId, int quantity);
     }
 
     public class ProductService : IProductService
@@ -139,14 +141,16 @@ namespace NNShop.Service
                         tag.Type = CommonContants.ProductTag;
                         _tagRepository.Add(tag);
                     }
+                    _productTagRepository.DeleteMulti(x => x.ProductID == Product.ID);
                     ProductTag productTag = new ProductTag();
                     productTag.ProductID = Product.ID;
                     productTag.TagID = tagId;
                     _productTagRepository.Add(productTag);
                 }
+
             }
-            _unitOfWork.Commit();
         }
+
 
         public IEnumerable<Product> GetLastest(int top)
         {
@@ -167,16 +171,18 @@ namespace NNShop.Service
                 case "popular":
                     query = query.OrderByDescending(x => x.ViewCount);
                     break;
+
                 case "discount":
                     query = query.OrderByDescending(x => x.Promotion.HasValue);
                     break;
+
                 case "price":
                     query = query.OrderBy(x => x.Price);
                     break;
+
                 default:
                     query = query.OrderByDescending(x => x.CreatedDate);
                     break;
-
             }
 
             totalRow = query.Count();
@@ -198,16 +204,18 @@ namespace NNShop.Service
                 case "popular":
                     query = query.OrderByDescending(x => x.ViewCount);
                     break;
+
                 case "discount":
                     query = query.OrderByDescending(x => x.Promotion.HasValue);
                     break;
+
                 case "price":
                     query = query.OrderBy(x => x.Price);
                     break;
+
                 default:
                     query = query.OrderByDescending(x => x.CreatedDate);
                     break;
-
             }
 
             totalRow = query.Count();
@@ -247,7 +255,23 @@ namespace NNShop.Service
 
         public Tag GetTag(string tagId)
         {
-            return _tagRepository.GetSingleByCondition(x=>x.ID == tagId);
+            return _tagRepository.GetSingleByCondition(x => x.ID == tagId);
+        }
+
+        public IEnumerable<Product> GetAllListProduct(int page, int pageSize, out int totalRow)
+        {
+            var query = _productRepository.GetAll();
+            totalRow = query.Count();
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public bool sellProduct(int productId, int quantity)
+        {
+            var product = _productRepository.GetSingleById(productId);
+            if (product.Quantity < quantity)
+                return false;
+            product.Quantity -= quantity;
+            return true;
         }
     }
 }

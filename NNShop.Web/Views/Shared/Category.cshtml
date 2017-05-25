@@ -18,7 +18,7 @@
                     var url = "/" + category.Alias + ".pc-" + category.ID + ".html";
                     var childCategory = Model.Where(x => x.ParentID == category.ID);
                     <li class="dropdown mega-dropdown active">
-                        <a href="@url"> @category.Name @(childCategory.Count() > 0 ? "*.*.*.*" : "")</a>
+                        <a href="@url"> @category.Name @(childCategory.Count() > 0 ?"" : "")</a>
                         @if (childCategory.Count() > 0)
                         {
                             <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NNShop.Data.Infrastructure
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         #region Properties
+
         private NnShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
 
@@ -24,7 +23,8 @@ namespace NNShop.Data.Infrastructure
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
-        #endregion
+
+        #endregion Properties
 
         protected RepositoryBase(IDbFactory dbFactory)
         {
@@ -33,6 +33,7 @@ namespace NNShop.Data.Infrastructure
         }
 
         #region Implementation
+
         public virtual T Add(T entity)
         {
             return dbSet.Add(entity);
@@ -71,7 +72,6 @@ namespace NNShop.Data.Infrastructure
         {
             return dbSet.Where(where).ToList();
         }
-
 
         public virtual int Count(Expression<Func<T, bool>> where)
         {
@@ -145,6 +145,7 @@ namespace NNShop.Data.Infrastructure
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
         }
-        #endregion
+
+        #endregion Implementation
     }
 }

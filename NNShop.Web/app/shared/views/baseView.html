@@ -1,113 +1,19 @@
-﻿Alexander Pierce    <!-- Site wrapper -->
-<div class="wrapper">
+﻿<div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
         <a href="#" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>NN</b>SHOP</span>
+            <span class="logo-lg"><b>LQK</b>SHOP</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li>
-                                        <!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="/Assets/admin/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
-                        </ul>
-                    </li>
-                    <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
-                    <!-- Tasks: style can be found in dropdown.less -->
-                    <li class="dropdown tasks-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li>
-                                        <!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="/Assets/admin/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">{{authentication.userName}}</span>
+                            <span class="hidden-xs">Xin Chào: {{authentication.userName}}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -136,17 +42,13 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="#" class="btn btn-default btn-flat">Thông tin</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" ng-click="logout()" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="#" ng-click="logOut()" class="btn btn-default btn-flat">Thoát</a>
                                 </div>
                             </li>
                         </ul>
-                    </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
                 </ul>
             </div>
@@ -160,11 +62,11 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="/Assets/admin/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="/Assets/client/css/hinh-nen-3d-cau-vong-dep-1.jpg" style="width:45px; height:45px" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p>{{authentication.userName}}</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <p></p>
+                    <a href="#"><i class="fa fa-circle text-success"></i>{{authentication.userName}}</a>
                 </div>
             </div>
             <!-- search form -->
@@ -184,26 +86,54 @@
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
                     <a href="javascript:void(0);">
-                        <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
+                        <i class="fa fa-home"></i> <span>Trang chủ</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-coffee"></i> <span>Sản phẩm</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a ui-sref="products"><i class="fa fa-circle-o"></i> Products</a></li>
-                        <li><a ui-sref="product_add"><i class="fa fa-circle-o"></i> Product Add</a></li>
+                        <li><a ui-sref="product_categories"><i class="fa fa-arrows"></i> Danh mục các sản phẩm</a></li>
+                        <li><a ui-sref="products"><i class="fa fa-gift"></i> Sản phẩm</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
                     <a href="javascript:void(0);">
-                        <i class="fa fa-dashboard"></i> <span>Sản phẩm</span>
+                        <i class="fa fa-dashboard"></i> <span>Hệ thống</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a ui-sref="product_categories"><i class="fa fa-circle-o"></i> Danh mục các sản phẩm</a></li>
-                        <li><a ui-sref="products"><i class="fa fa-circle-o"></i> Sản phẩm</a></li>
+                        <li><a ui-sref="application_groups"><i class="fa fa-users"></i> Nhóm người dùng</a></li>
+                        <li><a ui-sref="application_roles"><i class="fa fa-balance-scale"></i> Quyền</a></li>
+                        <li><a ui-sref="application_users"><i class="fa fa-user"></i> Người dùng</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-area-chart"></i> <span>Thống kê</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a ui-sref="statistic_revenue"><i class="fa fa-bar-chart"></i>Thống kê doanh thu</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="glyphicon glyphicon-shopping-cart"></i> <span>Đơn hàng</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a ui-sref="orders"><i class="glyphicon glyphicon-phone"></i>Đơn đặt hàng</a></li>
                     </ul>
                 </li>
             </ul>
@@ -389,8 +319,5 @@
         </div>
     </aside>
     <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-         immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->

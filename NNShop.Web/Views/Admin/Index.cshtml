@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Blank Page</title>
+    <title>Trang quản trị LQK</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -15,6 +15,7 @@
     <!-- Theme style -->
     <link href="/Assets/admin/libs/toastr/toastr.css" rel="stylesheet" />
     <link href="/Assets/admin/libs/angular-loading-bar/build/loading-bar.css" rel="stylesheet" />
+    <link href="/Assets/admin/libs/angular-ui-select/dist/select.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/Assets/admin/css/AdminLTE.min.css">
     <link href="/Assets/admin/css/custom.css" rel="stylesheet" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -42,8 +43,11 @@
     <!-- AdminLTE for demo purposes -->
     <script src="/Assets/admin/js/demo.js"></script>
     <!-- Begin AngularJS-->
-    <script src="/Assets/admin/libs/angular/angular.js"></script>
+    @*<script src="/Assets/admin/libs/angular/angular.js"></script>*@
+    <script src="/Scripts/angular.js"></script>
     <script src="/Assets/admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
+    @*<script src="/Assets/admin/libs/angular-sanitize/angular-sanitize.min.js"></script>*@
+    <script src="/Scripts/angular-sanitize.min.js"></script>
     <script src="/Assets/admin/libs/toastr/toastr.js"></script>
     <script src="/Assets/admin/libs/bootbox/bootbox.js"></script>
     <script src="/Assets/admin/libs/ckeditor/ckeditor.js"></script>
@@ -52,29 +56,61 @@
     <script src="/Assets/admin/libs/ckfinder/ckfinder.js"></script>
     <script src="/Assets/admin/libs/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="/Assets/admin/libs/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/Assets/admin/libs/checklist-model/checklist-model.js"></script>
+    <script src="/Assets/admin/libs/chart.js/dist/Chart.js"></script>
+    <script src="/Assets/admin/libs/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="/Assets/admin/libs/angular-ui-select/dist/select.min.js"></script>
 
     <script src="/app/shared/modules/nnshop.common.js"></script>
     <script src="/app/shared/filters/statusFilter.js"></script>
     <script src="/app/shared/services/apiService.js"></script>
     <script src="/app/shared/directive/pagerDirective.js"></script>
+    <script src="/app/shared/directive/asDateDirective.js"></script>
+    <script src="/app/shared/directive/fileUpload.directive.js"></script>
     <script src="/app/shared/services/notificationService.js"></script>
 
     <script src="/app/shared/services/authData.js"></script>
     <script src="/app/shared/services/authenticationService.js"></script>
-    <script src="~/app/shared/services/loginService.js"></script>
+    <script src="/app/shared/services/loginService.js"></script>
     <script src="/app/shared/services/commonService.js"></script>
+
     <script src="/app/component/products/product.module.js"></script>
     <script src="/app/component/product_categories/productCategory.module.js"></script>
+    <script src="/app/component/application_groups/applicationGroups.module.js"></script>
+
     <script src="/app/app.js"></script>
+
+    <script src="/app/component/application_roles/applicationRole.module.js"></script>
+    <script src="/app/component/application_users/applicationUser.module.js"></script>
+    <script src="/app/component/statistic/statistic.module.js"></script>
+    <script src="/app/component/orders/order.module.js"></script>
 
     <script src="/app/component/home/rootController.js"></script>
     <script src="/app/component/product_categories/productCategoryListController.js"></script>
     <script src="/app/component/product_categories/productCategoryAddController.js"></script>
     <script src="/app/component/product_categories/productCategoryEditController.js"></script>
     <script src="/app/component/products/productAddController.js"></script>
+    <script src="/app/component/products/productImportController.js"></script>
     <script src="/app/component/products/productListController.js"></script>
     <script src="/app/component/products/productEditController.js"></script>
+    <script src="/app/component/orders/orderListController.js"></script>
+    <script src="/app/component/orders/orderEditController.js"></script>
+
     <script src="/app/component/home/homeController.js"></script>
     <script src="/app/component/login/loginController.js"></script>
+
+    <script src="/app/component/application_groups/applicationGroupsAddController.js"></script>
+    <script src="/app/component/application_groups/applicationGroupsEditController.js"></script>
+    <script src="/app/component/application_groups/applicationGroupsListController.js"></script>
+
+    <script src="/app/component/application_roles/applicationRoleAddController.js"></script>
+    <script src="/app/component/application_roles/applicationRoleEditController.js"></script>
+    <script src="/app/component/application_roles/applicationRoleListController.js"></script>
+
+    <script src="/app/component/application_users/applicationUserAddController.js"></script>
+    <script src="/app/component/application_users/applicationUserEditController.js"></script>
+    <script src="/app/component/application_users/applicationUserListController.js"></script>
+
+    <script src="/app/component/statistic/revenueStatisticController.js"></script>
 </body>
 </html>

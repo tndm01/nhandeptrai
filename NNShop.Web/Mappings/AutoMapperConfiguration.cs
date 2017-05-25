@@ -17,6 +17,12 @@ namespace NNShop.Web.Mappings
             Mapper.CreateMap<ProductTag, ProductTagViewModel>();
             Mapper.CreateMap<Tag, TagViewModel>();
             Mapper.CreateMap<Page, PageViewModel>();
+            Mapper.CreateMap<ContactDetail, ContactViewModel>();
+            Mapper.CreateMap<Order, OrderViewModel>();
+
+            Mapper.CreateMap<ApplicationGroup, ApplicationGroupViewModel>();
+            Mapper.CreateMap<ApplicationRole, ApplicationRoleViewModel>();
+            Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>();
         }
     }
 }

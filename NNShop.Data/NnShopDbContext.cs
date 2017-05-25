@@ -4,7 +4,7 @@ using NNShop.Model.Models;
 
 namespace NNShop.Data
 {
-    public class NnShopDbContext : DbContext
+    public class NnShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public NnShopDbContext() : base("NnShopConnection")
         {

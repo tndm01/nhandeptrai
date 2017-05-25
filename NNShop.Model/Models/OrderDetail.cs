@@ -18,6 +18,9 @@ namespace NNShop.Model.Models
         [Key]
         [Column(Order = 2)]
         public int ProductID { set; get; }
+
+        public decimal Price { set; get; }
+
         public int Quantity { set; get; }
 
         [ForeignKey("OrderID")]

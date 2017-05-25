@@ -1,15 +1,14 @@
-﻿
-(function (app) {
+﻿(function (app) {
     app.controller('productCategoryEditController', productCategoryEditController);
 
-    productCategoryEditController.inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams', 'commonService']
+    productCategoryEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams', 'commonService']
 
     function productCategoryEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
         $scope.productCategory = {
             CreatedDate: new Date(),
             Status: true
         }
-
+        $scope.flatFolders = [];
         $scope.UpdateProductCategory = UpdateProductCategory;
         $scope.GetSeoTitle = GetSeoTitle;
 
@@ -36,8 +35,12 @@
         }
 
         function loadParentCategory() {
-            apiService.get('api/productCategory/getallparents', null, function (result) {
-                $scope.parentCategpries = result.data;
+            apiService.get('api/productcategory/getallparents', null, function (result) {
+                $scope.parentCategories = result.data;
+                $scope.parentCategories = commonService.getTree(result.data, "ID", "ParentID");
+                $scope.parentCategories.forEach(function (item) {
+                    recur(item, 0, $scope.flatFolders);
+                });
             }, function () {
                 console.log('Cannot get list parent');
             });

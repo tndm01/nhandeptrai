@@ -9,28 +9,34 @@
         <div class="flexslider">
             <ul class="slides">
                 <li>
-                    <div class="w3l_banner_nav_right_banner">
+                    @*<div class="w3l_banner_nav_right_banner">
                         <h3>Make your <span>food</span> with Spicy.</h3>
                         <div class="more">
                             <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
                         </div>
-                    </div>
+                    </div>*@
+                    <img src="/Scripts/dung-pc-1.png" class="img-responsive" style="width:917px" />
                 </li>
                 <li>
-                    <div class="w3l_banner_nav_right_banner1">
+                    @*<div class="w3l_banner_nav_right_banner1">
                         <h3>Make your <span>food</span> with Spicy.</h3>
                         <div class="more">
                             <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
                         </div>
-                    </div>
+                    </div>*@
+                    <img src="/Scripts/dung-pc-2.png" class="img-responsive" />
                 </li>
                 <li>
-                    <div class="w3l_banner_nav_right_banner2">
+                    @*<div class="w3l_banner_nav_right_banner2">
                         <h3>upto <i>50%</i> off.</h3>
                         <div class="more">
                             <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
                         </div>
-                    </div>
+                    </div>*@
+                    <img src="/Scripts/dung-pc-3.png" class="img-responsive" />
+                </li>
+                <li>
+                    <img src="/Scripts/dung-pc-4.png" class="img-responsive" />
                 </li>
             </ul>
         </div>
@@ -58,26 +64,26 @@
         <div class="wthree_banner_bottom_left_grid_sub1">
             <div class="col-md-4 wthree_banner_bottom_left">
                 <div class="wthree_banner_bottom_left_grid">
-                    <img src="/Assets/client/images/4.jpg" alt=" " class="img-responsive" />
-                    <div class="wthree_banner_bottom_left_grid_pos">
-                        <h4>Discount Offer <span>25%</span></h4>
-                    </div>
+                    @*<img src="/Assets/client/images/4.jpg" alt="#" class="img-responsive" />*@
+                    <img src="/Scripts/acer-aspire-e5-475-33wt-i3-6006u-600-277-1.png" class="img-responsive" style="width:390px"/>
                 </div>
             </div>
             <div class="col-md-4 wthree_banner_bottom_left">
                 <div class="wthree_banner_bottom_left_grid">
-                    <img src="/Assets/client/images/5.jpg" alt=" " class="img-responsive" />
-                    <div class="wthree_banner_btm_pos">
+                    @*<img src="/Assets/client/images/5.jpg" alt="#" class="img-responsive" />*@
+                    @*<div class="wthree_banner_btm_pos">
                         <h3>introducing <span>best store</span> for <i>groceries</i></h3>
-                    </div>
+                    </div>*@
+                    <img src="/Scripts/lenovo-ideapad-100s-11iby-600-277.png" class="img-responsive" style="width:390px"/>
                 </div>
             </div>
             <div class="col-md-4 wthree_banner_bottom_left">
                 <div class="wthree_banner_bottom_left_grid">
-                    <img src="/Assets/client/images/6.jpg" alt=" " class="img-responsive" />
+                    @*<img src="/Assets/client/images/6.jpg" alt="#" class="img-responsive" />
                     <div class="wthree_banner_btm_pos1">
                         <h3>Save <span>Upto</span> $10</h3>
-                    </div>
+                    </div>*@
+                    <img src="/Scripts/asus-x441sa-n3710.png" class="img-responsive" style="width:390px"/>
                 </div>
             </div>
             <div class="clearfix"> </div>
@@ -87,52 +93,42 @@
     <!-- top-brands -->
     <div class="top-brands">
         <div class="container">
-            <h3>Hot Offers</h3>
+            <h3>Sản Phẩm Mới</h3>
             <div class="agile_top_brands_grids">
-            @foreach (var product in Model.HotOffers)
-            {
-                var url = "/" + product.Alias + ".p-" + product.ID + ".html";
-            <div class="col-md-3 top_brand_left">
-                <div class="hover14 column">
-                    <div class="agile_top_brand_left_grid">
-                        <div class="tag"><img src="/Assets/client/images/tag.png" alt="#" class="img-responsive" /></div>
-                        <div class="agile_top_brand_left_grid1">
-                            <figure>
-                                <div class="snipcart-item block">
-                                    <div class="snipcart-thumb">
-                                        <a href="@url"><img title="#" alt="#" src="@product.Image" /></a>
-                                        <p>@product.Name</p>
-                                        <h4>@product.Price.ToString("N0") VND
-                                        @if (product.Promotion.HasValue)
-                                        {
-                                            <span style="color:red">@product.Promotion.Value.ToString("N0") VND</span>
-                                        }
-                                        </h4>
+                @foreach (var product in Model.HotOffers)
+                {
+                    var url = "/" + product.Alias + ".p-" + product.ID + ".html";
+                    <div class="col-md-3 top_brand_left">
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid">
+                                <div class="tag"><img src="/Assets/client/images/tag.png" alt="#" class="img-responsive" /></div>
+                                
+                                <div class="agile_top_brand_left_grid1">
+                                    <img src="/Assets/client/css/inew.gif" height="13" />
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="@url"><img title="#" alt="#" src="@product.Image" style="width:170px; margin-top:50px"/></a>
+                                                <p>@product.Name</p>
+                                                <h4>
+                                                    @product.Price.ToString("N0") VND
+
+                                                @if (product.Promotion.HasValue)
+                                                {
+                                                    <span style="color:red">@product.Promotion.Value.ToString("N0") VND</span>
+                                                }
+                                            </h4>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <a href="#"><input type="submit" class="btnAddToCart button" name="submit" data-id="@product.ID" value="Mua hàng" /></a>
+                                        </div>
                                     </div>
-                                    <div class="snipcart-details top_brand_home_details">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Fortune Sunflower Oil" />
-                                                <input type="hidden" name="amount" value="7.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </figure>
+                                </figure>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            }
-
+                }
                 <div class="clearfix"> </div>
             </div>
         </div>
@@ -140,58 +136,46 @@
     <!-- //top-brands -->
     <!-- fresh-vegetables -->
     <div class="top-brands">
-    <div class="container">
-        <h3>Top Hot</h3>
-        <div class="agile_top_brands_grids">
-            @foreach (var topHot in Model.TopHotProducts)
-            {
-                var url = "/" + topHot.Alias + ".p-" + topHot.ID + ".html";
-                <div class="col-md-3 top_brand_left">
-                    <div class="hover14 column">
-                        <div class="agile_top_brand_left_grid">
-                            <div class="tag"><img src="/Assets/client/images/tag.png" alt="#" class="img-responsive" /></div>
-                            <div class="agile_top_brand_left_grid1">
-                                <figure>
-                                    <div class="snipcart-item block">
-                                        <div class="snipcart-thumb">
-                                            <a href="@url"><img title="#" alt="#" src="@topHot.Image" /></a>
-                                            <p>@topHot.Name</p>
-                                            <h4>
-                                                @topHot.Price.ToString("N0") VND
-                                            @if (topHot.Promotion.HasValue)
-                                            {
-                                                <span style="color:red">@topHot.Promotion.Value.ToString("N0") VND</span>
-                                            }
-                                        </h4>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Fortune Sunflower Oil" />
-                                                <input type="hidden" name="amount" value="7.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
+        <div class="container">
+            <h3>Sản Phẩm HOT</h3>
+            <div class="agile_top_brands_grids">
+                @foreach (var topHot in Model.TopHotProducts)
+                {
+                    var url = "/" + topHot.Alias + ".p-" + topHot.ID + ".html";
+                    <div class="col-md-3 top_brand_left">
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid">
+                                <div class="tag"><img src="/Assets/client/images/tag.png" alt="#" class="img-responsive" /></div>
+                                <div class="agile_top_brand_left_grid1">
+                                    <img src="/Assets/client/css/inew.gif" height="13" />
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="@url"><img title="#" alt="#" src="@topHot.Image"style="width:170px; margin-top:50px" /></a>
+                                                <p>@topHot.Name</p>
+                                                <h4>
+                                                    @topHot.Price.ToString("N0") VND
+                                                    @if (topHot.Promotion.HasValue)
+                                                    {
+                                                        <span style="color:red">@topHot.Promotion.Value.ToString("N0") VND</span>
+                                                    }
+                                                </h4>
+                                            </div>
+                                            <div class="snipcart-details top_brand_home_details">
+                                                <a href="#"><input type="submit" class="btnAddToCart button" data-id="@topHot.ID" name="submit" value="Mua hàng" /></a>
+                                            </div>
+                                        </div>
+                                    </figure>
                                 </div>
-                            </figure>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            }
+                }
 
-            <div class="clearfix"> </div>
+                <div class="clearfix"> </div>
+            </div>
         </div>
     </div>
-</div>
     <!-- //fresh-vegetables -->
 }
 

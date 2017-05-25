@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+<div class="w3l_banner_nav_right_banner3">
+    <h3>Sản phẩm mới dành cho bạn!<span class="blink_me"></span></h3>
+</div>
+<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">
+    <div class="container">
+        <h3>Giỏ hàng của bạn</h3>
+        <div id="cartContent">
+            <table class="table" style="margin-top:15px">
+                <thead style="border:solid 1px">
+                    <tr>
+                        <td>STT</td>
+                        <td>Tên sản phẩm</td>
+                        <td>Hình ảnh</td>
+                        <td>Giá</td>
+                        <td>Số lượng</td>
+                        <td>Thành tiền</td>
+                        <td>#</td>
+                    </tr>
+                </thead>
+                <tbody id="cartBody"></tbody>
+            </table>
+            <button class="btn btn-success" id="btnContinue">Tiếp tục mua hàng</button>
+            <button class="btn btn-danger" id="btnDeleteAll">Xóa giỏ hàng</button>
+            <button class="btn btn" id="btnCheckout">Thanh toán</button>
+            <div class="pull-right">
+                Tổng tiền: <span id="lblTotalOrder"></span>
+            </div>
+        </div>
+        <div id="divCheckout" style="display:none">
+            <div class="col-md-8 agileinfo_mail_grid_right" style="margin-top:15px">
+                @if (Request.IsAuthenticated)
+                {
+                    <label>
+                        <input type="checkbox" id="checkUserLoginInfo" />
+                        Sử dụng thông tin đăng nhập
+                    </label>
+                }
+                <form method="post" id="frmPayment">
+
+                    <div class="col-md-6 wthree_contact_left_grid">
+                        <input type="text" class="textbox" name="name" id="txtName" placeholder="Họ tên*">
+                        <input type="email" class="textbox" name="email" id="txtEmail" placeholder="Email*">
+                    </div>
+                    <div class="col-md-6 wthree_contact_left_grid">
+                        <input type="text" class="textbox" name="phone" id="txtPhone" placeholder="Điện thoại*">
+                        <input type="text" name="Address" dirname="address" class="textbox" id="txtAddress" placeholder="Địa chỉ">
+                    </div>
+                    <div class="clearfix"> </div>
+                    <textarea name="Message" id="txtMessage" placeholder="Message..."></textarea>
+                    <input type="submit" id="btnCreateOrder" value="Thanh toán">
+                    <input type="reset" value="Clear">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="tplCart" type="x-tmpl-mustache">
+    <tr>
+        <td>{{ProductId}}</td>
+        <td>{{ProductName}}</td>
+        <td><img src="{{Image}}" height="50"></td>
+        <td>{{PriceF}}</td>
+        <td><input type="number" data-id="{{ProductId}}" data-price="{{Price}}" value="{{Quantity}}" class="input txtQuantity" /></td>
+        <td id="amount_{{ProductId}}">{{Amount}}</td>
+        <td><button class="btn btn-danger btnDeleteItem" data-id="{{ProductId}}"><i class="fa fa-trash-o"></i></button></td>
+    </tr>
+</script>
+

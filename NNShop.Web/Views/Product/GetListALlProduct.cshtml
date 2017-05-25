@@ -1,0 +1,50 @@
+﻿@model NNShop.Web.Infrastructure.Core.PaginationSet<NNShop.Web.Models.ProductViewModel>
+@{
+    ViewBag.Title = "GetListALlProduct";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<div class="w3l_banner_nav_right_banner3">
+    <h3>Sản phẩm mới dành cho bạn!<span class="blink_me"></span></h3>
+</div>
+<div class="top-brands">
+    <div class="container">
+        <h3 style="margin-top:38px">Tất cả sản phẩm</h3>
+        <div class="agile_top_brands_grids">
+            @foreach (var allProduct in Model.Items)
+            {
+                var url = "/" + allProduct.Alias + ".p-" + allProduct.ID + ".html";
+                <div class="col-md-3 top_brand_left" style="margin-top:13px">
+                    <div class="hover14 column">
+                        <div class="agile_top_brand_left_grid">
+                            <div class="tag"><img src="/Assets/client/images/tag.png" alt="#" class="img-responsive" /></div>
+                            <div class="agile_top_brand_left_grid1">
+                                <img src="/Assets/client/css/inew.gif" height="13" />
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <a href="@url"><img title="#" alt="#" src="@allProduct.Image" style="width:170px; margin-top:50px;" /></a>
+                                            <p>@allProduct.Name</p>
+                                            <h4>
+                                                @allProduct.Price.ToString("N0") VND
+                                                @if (allProduct.Promotion.HasValue)
+                                                {
+                                                    <span style="color:red">@allProduct.Promotion.Value.ToString("N0") VND</span>
+                                                }
+                                            </h4>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <a href="#"><input type="submit" class="btnAddToCart button" name="submit" data-id="@allProduct.ID" value="Mua hàng" /></a>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using NNShop.Data.Infrastructure;
 using NNShop.Data.Repositories;
 using NNShop.Model.Models;
@@ -85,6 +81,5 @@ namespace NNShop.Service
         {
             _ProductCategoryRepository.Update(ProductCategory);
         }
-
     }
 }

@@ -6,6 +6,7 @@ using System.Web;
 
 namespace NNShop.Web.Models
 {
+    [Serializable]
     public class ProductViewModel
     {
         public int ID { set; get; }
@@ -48,6 +49,8 @@ namespace NNShop.Web.Models
         public string Tags { set; get; }
 
         public int Quantity { set; get; }
+
+        public decimal OriginalPrice { set; get; }
 
         public virtual ProductCategoryViewModel ProductCategory { set; get; }
 

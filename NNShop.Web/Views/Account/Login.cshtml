@@ -1,0 +1,49 @@
+﻿@model NNShop.Web.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<div class="w3l_banner_nav_right_banner3">
+    <h3>Đăng nhập & Đăng ký!<span class="blink_me"></span></h3>
+</div>
+<div class="w3_login">
+    <h3>Sign In & Sign Up</h3>
+    <div class="w3_login_module">
+        <div class="module form-module">
+            <div class="toggle">
+                <i class="fa fa-times fa-pencil"></i>
+                <div class="tooltip">Click Me</div>
+            </div>
+            <div class="form">
+                <h2>Đăng nhập tài khoản</h2>
+                @using (Html.BeginForm("Login", "Account",new {returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                {
+                    <span>Tài khoản<label>*</label></span>
+                    @Html.TextBoxFor(model => model.UserName)
+                    <span>Mật khẩu<label>*</label></span>
+                    @Html.PasswordFor(model => model.Password)
+                    <input type="submit" value="Đăng nhập" />
+                }
+            </div>
+            <div class="cta"><a href="#">Forgot your password?</a></div>
+        </div>
+    </div>
+    <script>
+        $('.toggle').click(function () {
+            // Switches the Icon
+            $(this).children('i').toggleClass('fa-pencil');
+            // Switches the forms
+            $('.form').animate({
+                height: "toggle",
+                'padding-top': 'toggle',
+                'padding-bottom': 'toggle',
+                opacity: "toggle"
+            }, "slow");
+        });
+    </script>
+</div>
+
+
+

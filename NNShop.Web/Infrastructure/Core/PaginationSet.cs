@@ -7,7 +7,7 @@ namespace NNShop.Web.Infrastructure.Core
 {
     public class PaginationSet<T>
     {
-        public int Page { set; get; }
+        public int Pages { set; get; }
 
         public int Count
         {
