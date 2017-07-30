@@ -13,6 +13,7 @@ namespace NNShop.Web.Mappings
         public static void Configure()
         {
             Mapper.CreateMap<Product, ProductViewModel>();
+            Mapper.CreateMap<Product, ExportProductViewModel>();
             Mapper.CreateMap<ProductCategory, ProductCategoryViewModel>();
             Mapper.CreateMap<ProductTag, ProductTagViewModel>();
             Mapper.CreateMap<Tag, TagViewModel>();

@@ -38,9 +38,7 @@ namespace NNShop.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 var model = _productService.GetAll();
-
                 var responeData = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(model);
-
                 var respone = request.CreateResponse(HttpStatusCode.OK, responeData);
                 return respone;
             });
@@ -248,7 +246,6 @@ namespace NNShop.Web.Api
             return Request.CreateResponse(HttpStatusCode.OK, "Đã nhập thành công " + addedCount + " sản phẩm thành công.");
         }
 
-
         private List<Product> ReadProductFromExcel(string fullPath, int categoryId)
         {
             using (var package = new ExcelPackage(new FileInfo(fullPath)))
@@ -324,6 +321,31 @@ namespace NNShop.Web.Api
                     catch { }
                 }
                 return listProduct;
+            }
+        }
+
+        [HttpGet]
+        [Route("ExportXls")]
+        public async Task<HttpResponseMessage> ExportXls(HttpRequestMessage request, string filter = null)
+        {
+            string fileName = string.Concat("Product_" + DateTime.Now.ToString("yyyyMMddhhmmsss") + ".xlsx");
+            var folderReport = ConfigHelper.GetByKey("ReportFolder");
+            string filePath = HttpContext.Current.Server.MapPath(folderReport);
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            string fullPath = Path.Combine(filePath, fileName);
+            try
+            {
+                var data = _productService.GetListProduct(filter).ToList();
+                var responeData = Mapper.Map<IEnumerable<Product>, List<ExportProductViewModel>>(data);
+                await ReportHelper.GenerateXls(responeData, fullPath);
+                return request.CreateErrorResponse(HttpStatusCode.OK, Path.Combine(folderReport, fileName));
+            }
+            catch (Exception ex)
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
     }

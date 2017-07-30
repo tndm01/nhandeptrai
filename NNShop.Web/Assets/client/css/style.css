@@ -8,6 +8,11 @@ html, body{
     font-size: 100%;
 	font-family: 'Open Sans', sans-serif;
 	background:#ffffff;
+    margin: 0;
+	background-image: url('../Scripts/left.jpg'), url('../Scripts/right.jpg');
+    background-position: left 120px, right 120px;
+    background-repeat: no-repeat, no-repeat;
+	min-height:300px;
 }
 ul li,ol li{
 	font-size:14px;
@@ -89,7 +94,7 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
     color: #fff;
     text-decoration: none;
     padding: .5em 3em;
-    background: #fff;
+    background: #84C639;
 	display:block;
 }
 .w3l_search{

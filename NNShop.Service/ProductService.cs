@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NNShop.Common;
@@ -31,6 +32,8 @@ namespace NNShop.Service
         IEnumerable<Product> Search(string keyword, int page, int pageSize, string sort, out int totalRow);
 
         IEnumerable<Product> GetReatedProducts(int id, int top);
+
+        IEnumerable<Product> GetListProduct(string keyword);
 
         IEnumerable<string> GetListProductByName(string name);
 
@@ -272,6 +275,16 @@ namespace NNShop.Service
                 return false;
             product.Quantity -= quantity;
             return true;
+        }
+
+        public IEnumerable<Product> GetListProduct(string keyword)
+        {
+            IEnumerable<Product> quyey;
+            if (!string.IsNullOrEmpty(keyword))
+                quyey = _productRepository.GetMulti(x => x.Name.Contains(keyword));
+            else
+                quyey = _productRepository.GetAll();
+            return quyey;
         }
     }
 }

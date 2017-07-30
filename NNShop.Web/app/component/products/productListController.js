@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('productListController', productListController);
 
-    productListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox', '$filter'];
+    productListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox', '$filter','authData','$state'];
 
-    function productListController($scope, apiService, notificationService, $ngBootbox, $filter) {
+    function productListController($scope, apiService, notificationService, $ngBootbox, $filter, authData, $state) {
         $scope.products = [];
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -14,6 +14,21 @@
         $scope.deleteProduct = deleteProduct;
         $scope.selectAll = selectAll;
         $scope.deleteMultiple = deleteMultiple;
+        $scope.exportExcel = exportExcel;
+        function exportExcel() {
+            var config = {
+                params: {
+                    filter: $scope.keyword
+                }
+            }
+            apiService.get('/api/product/ExportXls', config, function (result) {
+                if (result.status = 200) {
+                    window.location.href = result.data.Message;
+                }
+            }, function () {
+                notificationService.displayError('Xuất Excel không thành công!');
+            });
+        }
 
         function deleteMultiple() {
             var lstId = [];
@@ -86,6 +101,10 @@
                     page: page,
                     pageSize: 10
                 }
+            }
+            var userName = authData.authenticationData.userName;
+            if (userName == "") {
+                $state.go('login');
             }
             apiService.get('/api/product/getall', config, function (result) {
                 $scope.products = result.data.Items;
