@@ -5223,7 +5223,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\shared\common\" />
     <Folder Include="Assets\admin\libs\checklist-model\test\" />
     <Folder Include="Datafiles\" />
     <Folder Include="UploadedFiles\Excels\" />

@@ -15,6 +15,7 @@
         $scope.selectAll = selectAll;
         $scope.deleteMultiple = deleteMultiple;
         $scope.exportExcel = exportExcel;
+
         function exportExcel() {
             var config = {
                 params: {
